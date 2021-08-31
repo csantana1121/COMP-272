@@ -1,4 +1,4 @@
-startnum=1
+startnum=0
 index = 0
 global greatestpeak
 greatestpeak = 0
@@ -7,8 +7,8 @@ while True:
     print(f'Indexing for {index}')
     steps = 0
     highestnum = 0
-    while index != 1:
-        if index%2 == 0:
+    while True:
+        if index%2 == 0 and index != 0:
             index = index / 2
             # print(index)
         else:
@@ -19,8 +19,8 @@ while True:
             highestnum = index
         if index > greatestpeak:
             greatestpeak = index
-        # if index == 1:
-        #     loop = False
+        if index == 1:
+            break
 
     startnum += 1
     print(f'Total number of steps: {steps}')
