@@ -1,0 +1,9 @@
+Any solution to a computational problem, improvments can be made in the following ways
+1. research into the problem and use existing work (that was previously done)
+2. algorithmic improvement ( clever improvement)
+3. data structures
+
+After this,
+4. code level improvement (lot of little things or tricks you can do)
+5. (ignoring changing to a faster processor, or more memory)
+6. parallelism - which use of multiple cores on your computer
