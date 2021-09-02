@@ -12,5 +12,5 @@ while True:
         k=k+1
     if p<x:
         break
-    print(f'Peaking {k}')
+    # print(f'Indexing {k}')
 print(k)

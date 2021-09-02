@@ -9,7 +9,7 @@ while True:
     highestnum = 0
     while True:
         if index%2 == 0 and index != 0:
-            index = index / 2
+            index = index // 2
             # print(index)
         else:
             index = (3*index)+1
