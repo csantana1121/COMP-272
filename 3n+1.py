@@ -4,8 +4,8 @@ p = (2<<k)-1
 x=p
 k=0
 while True:
-    if p%2==1:
-        p=(3*p+1)//2
+    if p&1==1:
+        p=((p<<1)+p+1)>>1
         k=k+1
     else:
         p=p>>1
