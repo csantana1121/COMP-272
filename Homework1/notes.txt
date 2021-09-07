@@ -1,4 +1,18 @@
 For Homework 1 run it on home pc and see difference in time computation.
 Big O is around the issue of time complexity to figure the amount of runtime needed.
-simple for loop each iteration of the loop is 1 unit of time so it can be denoted as O(n).
+simple for loop each iteration of the loop is 1 unit of time so it can be denoted as O(n) that increases
+with the size of the dataset. You can also have O(1) meaning it runs within a baseline constant time rate
+regardless of size. Like 3 minutes to run on average for a program regardless if you have a small dataset
+or a huge dataset.
 Cheat Sheet - https://www.bigocheatsheet.com/
+Example of O(log(n)) is a binary search tree where n is a unit of time. It doesn't need to go through 
+all the vlaues of n to complete running there it takes less time than the base value of n.
+If you have a program solution with nested loops that run through the dataset twice it takes n units of
+time each loop. So if you have a loop within a loop you have each loop running n units of time which 
+ends up being n * n or n^2 becoming a quadratic equation. Logic applies to more examples like cubic n^3.
+Continue to hammer down that t complexity equation will vary with every program and code. For instance a
+program containing a if else statement that runs two different lines of code would be t1+max(t2,t3) where
+t1 is the time it take to run the program in either case. And t2 and t3 are specific to the if else cases.
+if(){---> t2 }else{---> t3}. You'll really notice the difference in computation time when working with 
+larger sets of data. This is important for irl applications. Since there you will generally be working
+with large sets of data.
