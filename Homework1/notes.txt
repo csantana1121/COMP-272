@@ -1,0 +1,4 @@
+For Homework 1 run it on home pc and see difference in time computation.
+Big O is around the issue of time complexity to figure the amount of runtime needed.
+simple for loop each iteration of the loop is 1 unit of time so it can be denoted as O(n).
+Cheat Sheet - https://www.bigocheatsheet.com/
