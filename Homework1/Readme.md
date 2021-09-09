@@ -1,0 +1,2 @@
+# Homework 1: MaxSumTest
+## MaxSumTest to understand Big O notation and how it interacts with various code solutions to a problem to display efficiency and runtime difference. Data sample of array size 10000<n<18000.
