@@ -16,3 +16,28 @@ t1 is the time it take to run the program in either case. And t2 and t3 are spec
 if(){---> t2 }else{---> t3}. You'll really notice the difference in computation time when working with 
 larger sets of data. This is important for irl applications. Since there you will generally be working
 with large sets of data.
+Example: Array List
+1. get(i) --> O(1) you just get the value from the index to its constant time everytime.
+2. adding to the beginning of the ArrayList ---> O(n) you need to move n elements down the array to make 
+space for the element at the start of the arraylist. So it varies with the size of the array
+3. Adding at the end of the arraylist --> O(1) you can just append to the end of the list so it will be 
+a constant time value everytime and doesn't vary with array size and it's just adding 1 element to the end.
+Example: Linked List
+1. get(i) --> O(n) You will have to transverse the linkedlist to find the element in the linked list.
+So the time varies based on the size of the linkedlist.
+2. Add at the front --> O(1) Constant since you are adding it at the front of the linked list it will 
+take the same time and not vary with the size of the linked list.
+3. End of linked list --> O(1) Constant since you are adding it at the end of the linked list it will 
+take the same time and not vary with the size of the linked list.
+4. Add(i,val) --> O(n) You will have to transverse the linked list to get to index i before being able 
+to insert element i into the linkedlist so it varies with the size of the linked list.
+Sample problem: Print 5 values from index 20 to 24 what is the most efficient within a linkedlist.
+Answer: Use an iterator to get from index which will give O(1) time instead of O(n) time complexity of get(i).
+Example: Stacks (LIFO)
+push() --> O(1) Constant since you will just be adding an element to the top of the stack.
+pop() --> O(1) Constant since you will just be removing an element from the top of the stack.
+isEmpty() --> O(1) Constant as you will only need to check 1 element to see if the stack isempty
+peek() --> O(1) Constant as you will only need to check the top of the stack.
+Example: Queue (FIFO)
+Example: Hash/HashMap/Dictionary
+search via hash --> O(1) constant since you are just looking things up based on some key value.
