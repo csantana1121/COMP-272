@@ -14,10 +14,13 @@ public class squarematrix {
 
     public void columnMins(int[][] arr){
         for (int i = 0; i < arr.length; i++){
-            int columnmin = arr[i][0];
+            int columnmin = arr[0][i];
             for (int j = 0; j < arr.length; j++){
+                System.out.println(arr[j][i]);
+                if (arr[i][j]==4)
+                    System.out.println("its 4");
                 if (arr[i][j]<columnmin)
-                    columnmin = arr[i][j];
+                    columnmin = arr[j][i];
             }
             System.out.println(columnmin);
         }
@@ -26,6 +29,9 @@ public class squarematrix {
         squarematrix driver = new squarematrix();
         int square[][] = {{3,2,5},{1,0,4},{5,6,7}};
         driver.rowSums(square);
+        System.out.println();
         driver.columnMins(square);
+        if (4<5)
+            System.out.println("4 is less than 5");
     }
 }
