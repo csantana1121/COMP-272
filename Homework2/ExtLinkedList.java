@@ -8,9 +8,12 @@ public class ExtLinkedList<E> extends LinkedList<E>{
             midpoint = size / 2;
         else
             midpoint = (size / 2)+1; 
-        for (int i = midpoint; i < size; i++){
-            secondhalf.add(this.get(i));
-        }
+        // for (int i = midpoint; i < size; i++){
+        //     secondhalf.add(this.get(i));
+        // }
+        ListIterator <E> li = this.listIterator(midpoint);
+        while(li.hasNext())
+            secondhalf.add(li.next());
         return secondhalf; 
     }
 
