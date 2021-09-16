@@ -47,14 +47,15 @@ public class ExtLinkedList<E> extends LinkedList<E>{
         System.out.println(test);
         System.out.println(second);
         System.out.println(secondempty);
-        ExtLinkedList oddindexes = test.oddList();
-        ExtLinkedList oddempty = empty.oddList();
-        System.out.println(oddindexes);
-        System.out.println(oddempty);
         ExtLinkedList evenindexes = test.evenList();
         ExtLinkedList evenempty = empty.evenList();
         System.out.println(evenindexes);
         System.out.println(evenempty);
+        ExtLinkedList oddindexes = test.oddList();
+        empty.add("testing");
+        ExtLinkedList oddempty = empty.oddList();
+        System.out.println(oddindexes);
+        System.out.println(oddempty);
 
     }
 }
