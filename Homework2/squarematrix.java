@@ -16,6 +16,9 @@ public class squarematrix {
         for (int i = 0; i < arr.length; i++){
             int columnmin = arr[0][i];
             for (int j = 0; j < arr.length; j++){
+                //for some reason (arr[j][i]<columnmin) wasn't working
+                //when columnmin was 1 higher than arr[j][i] used this roundabout way
+                //not sure of the java syntax issue or why it didn't work
                 if (columnmin-arr[j][i]>0)
                     columnmin = arr[j][i];
             }
