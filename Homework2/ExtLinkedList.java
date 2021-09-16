@@ -14,6 +14,14 @@ public class ExtLinkedList<E> extends LinkedList<E>{
         }
         return secondhalf; 
     }
+
+    public ExtLinkedList <E> oddList(){
+        return null;
+    }
+
+    public ExtLinkedList <E> evenList(){
+        return null;
+    }
     public static void main(String[] args) {
         ExtLinkedList<Integer> test = new ExtLinkedList<Integer>();
         test.add(1);
@@ -21,8 +29,9 @@ public class ExtLinkedList<E> extends LinkedList<E>{
         test.add(3);
         test.add(4);
         test.add(5);
-        System.out.println(test);
+        //test.add(6); //comment in and out for even and odd number list
         ExtLinkedList second = test.secondHalfList();
+        System.out.println(test);
         System.out.print(second);
     }
 }
