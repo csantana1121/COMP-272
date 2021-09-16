@@ -25,7 +25,13 @@ public class ExtLinkedList<E> extends LinkedList<E>{
     }
 
     public ExtLinkedList <E> evenList(){
-        return null;
+        ExtLinkedList <E> evenindexs = new ExtLinkedList<E>();
+        int size = this.size();
+        for (int i = 0; i < size;i++){
+            if ( i % 2 == 0)
+                evenindexs.add(this.get(i));
+        }
+        return evenindexs;
     }
     public static void main(String[] args) {
         ExtLinkedList<Integer> test = new ExtLinkedList<Integer>();
@@ -45,6 +51,10 @@ public class ExtLinkedList<E> extends LinkedList<E>{
         ExtLinkedList oddempty = empty.oddList();
         System.out.println(oddindexes);
         System.out.println(oddempty);
+        ExtLinkedList evenindexes = test.evenList();
+        ExtLinkedList evenempty = empty.evenList();
+        System.out.println(evenindexes);
+        System.out.println(evenempty);
 
     }
 }
