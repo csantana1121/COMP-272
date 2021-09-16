@@ -3,11 +3,15 @@ public class ExtLinkedList<E> extends LinkedList<E>{
     public ExtLinkedList <E> secondHalfList(){
         ExtLinkedList <E> secondhalf = new ExtLinkedList<E>();
         int size = this.size();
-        int midpoint = size / 2;
-        ListIterator new_list = this.listIterator(midpoint);
-        // while(new_list.hasNext()){
-        //     System.out.println(new_list);
-        // }
+        int midpoint;
+        if (size%2 == 0){
+            midpoint = size / 2;
+        }else{
+            midpoint = (size / 2)+1; 
+        }
+        for (int i = midpoint; i < size; i++){
+            secondhalf.add(this.get(i));
+        }
         return secondhalf; 
     }
     public static void main(String[] args) {
