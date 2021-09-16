@@ -1,6 +1,6 @@
 public class replaceChar {
 
-    public static String replaceChar(String p, int k, char c){
+    public String replaceChar(String p, int k, char c){
         try{
             return p.substring(0,k)+ c + p.substring(k+1);
         } 
@@ -11,11 +11,12 @@ public class replaceChar {
     }
 
     public static void main(String[] args) {
+        replaceChar replacer = new replaceChar();
         String test = "Hi testing that this works";
         String empty = "";
-        String newstr = replaceChar(test,3,'+');
-        String outofbounds = replaceChar(empty, 0, 'I');
-        String testbounds = replaceChar(test, 50, 'T');
+        String newstr = replacer.replaceChar(test,3,'+');
+        String outofbounds = replacer.replaceChar(empty, 0, 'I');
+        String testbounds = replacer.replaceChar(test, 50, 'T');
         System.out.println(test);
         System.out.println(newstr);
         System.out.println(outofbounds);
