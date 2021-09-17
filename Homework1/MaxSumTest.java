@@ -74,7 +74,8 @@ public final class MaxSumTest
         for( int i = 0, j = 0; j < a.length; j++ )
         {
             thisSum += a[ j ];
-
+            System.out.println(i);
+            System.out.println(a[i]);
             if( thisSum > maxSum )
             {
                 maxSum = thisSum;
