@@ -1,5 +1,6 @@
 import java.util.*;
 public class ExtLinkedList<E> extends LinkedList<E>{
+
     public ExtLinkedList <E> secondHalfList(){
         ExtLinkedList <E> secondhalf = new ExtLinkedList<E>();
         int size = this.size();
