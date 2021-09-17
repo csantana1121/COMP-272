@@ -1,9 +1,9 @@
 import java.util.*;
 
-public class prefixSums<E> extends LinkedList<Integer>{
+public class prefixSums{
     
-    public void prefixSums(){
-        ListIterator <Integer> li = this.listIterator();
+    public void prefixSums(LinkedList<Integer> input){
+        ListIterator <Integer> li = input.listIterator();
         int prefixsum = 0;
         String output = "";
         while(li.hasNext()){
@@ -14,8 +14,8 @@ public class prefixSums<E> extends LinkedList<Integer>{
         System.out.println(output);
     }
 
-    public void reversePrefixSums(){
-        Iterator li = this.descendingIterator();
+    public void reversePrefixSums(LinkedList<Integer> input){
+        Iterator li = input.descendingIterator();
         int prefixsum = 0;
         String output = "";
         while(li.hasNext()){
@@ -27,15 +27,16 @@ public class prefixSums<E> extends LinkedList<Integer>{
     }
 
     public static void main(String[] args) {
-        prefixSums<Integer> driver = new prefixSums<Integer>();
-        driver.add(5);
-        driver.add(3);
-        driver.add(2);
-        driver.add(9);
-        driver.add(3);
-        driver.add(15);
-        driver.add(22);
-        driver.prefixSums();
-        driver.reversePrefixSums();
+        prefixSums driver = new prefixSums();
+        LinkedList<Integer> test = new LinkedList<Integer>();
+        test.add(5);
+        test.add(3);
+        test.add(2);
+        test.add(9);
+        test.add(3);
+        test.add(15);
+        test.add(22);
+        driver.prefixSums(test);
+        driver.reversePrefixSums(test);
     }
 }
