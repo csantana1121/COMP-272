@@ -20,20 +20,26 @@ public class ExtLinkedList<E> extends LinkedList<E>{
 
     public ExtLinkedList <E> oddList(){
         ExtLinkedList <E> oddindexs = new ExtLinkedList<E>();
-        int size = this.size();
-        for (int i = 0; i < size;i++){
-            if ( i % 2 != 0)
-                oddindexs.add(this.get(i));
+        ListIterator <E> li = this.listIterator();
+        int index = 0;
+        while(li.hasNext()){
+            E value = li.next();
+            if (index %2 != 0)
+                oddindexs.add(value);
+            index += 1;
         }
         return oddindexs;
     }
 
     public ExtLinkedList <E> evenList(){
         ExtLinkedList <E> evenindexs = new ExtLinkedList<E>();
-        int size = this.size();
-        for (int i = 0; i < size;i++){
-            if ( i % 2 == 0)
-                evenindexs.add(this.get(i));
+        ListIterator <E> li = this.listIterator();
+        int index = 0;
+        while(li.hasNext()){
+            E value = li.next();
+            if (index %2 == 0)
+                evenindexs.add(value);
+            index += 1;
         }
         return evenindexs;
     }
