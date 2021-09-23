@@ -204,9 +204,11 @@ public class MyLinkedList<E>
     public E get(int i) {
         Node<E> n = first;
         if (!isEmpty()) {
-            while(n.getNext() != null){
-                n = n.getNext();
-            }
+            if ((i>=0) && (i<size)) {
+                while(n.getNext() != null){
+                    n = n.getNext();
+                }
+            } else throw new IndexOutOfBoundsException();
         } else {
             System.out.println("list empty ..");
 
