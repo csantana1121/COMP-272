@@ -143,7 +143,7 @@ public class MyLinkedList<E>
     //Objects.equals(o,e)
     //return false if the list is empty
     public boolean contains(Object o) {
-        
+        return true;
     }
     
     // brings the current list back to an empty list
@@ -155,7 +155,7 @@ public class MyLinkedList<E>
     // throw IndexOutOfBounds exception of i is out of bounds or the list is empty
     public E get(int i) {
         
-        
+        return val;
     }
     
     // compares this MyLinkedList with the parameter otherList 
@@ -169,6 +169,10 @@ public class MyLinkedList<E>
         
     }
     
+    public static void main(String[] args) {
+        MyLinkedList<Integer> test = new MyLinkedList<Integer>();
+        System.out.println(test);
+    }
     
 }
     
