@@ -11,25 +11,46 @@ public class MyBigInteger{
     // example, MyBigInteger("383023322") will store the integer 383023322 in the linked list 
     // one digit per node. 
     public MyBigInteger(String p) {
-        
-        
+        bigI =new MyLinkedList<>();
+        char[] chars = p.toCharArray();
+        for(int i = 0; i<chars.length;i++)
+            bigI.addLast(Character.getNumericValue(chars[i]));
+        bigI.printListForward();
     }
     
     //add(..) adds this MyBigInteger to other MyBigInteger and returns the sum as a MyBigInteger
     // the original Big Integers don't change.
     public MyBigInteger add(MyBigInteger other) {
         
+        return this;
         
     }
     
     // returns true if and only if the two big integers are equal
     public boolean equals(Object other) {
-        
+        if(other.getClass().equals(this.getClass())){
+            MyBigInteger compare = (MyBigInteger) other;
+            return this.bigI.equals(compare.bigI);
+        } else
+            return false;
     }
     // returns true if and only if this MyBigInteger is less than other MyBigInteger
     
     public boolean lessThan(MyBigInteger other) {
-        
-    }
+        if(this.bigI.size<other.bigI.size)
+            return true;
+        else if (this.bigI.size>other.bigI.size)
+            return false;
+        else{
+            Node<Integer> num1 = this.bigI.first;
+            Node<Integer> num2 = other.bigI.first;
+            for(int i = 0; i<this.bigI.size;i++){
+                if(num1.getInfo()<num2.getInfo())
+                    return true;
+                num1 = num1.getNext();
+                num2 = num2.getNext();
+            }
+            return false;
+        }
     }
 }
