@@ -205,8 +205,14 @@ public class MyLinkedList<E>
         Node<E> n = first;
         if (!isEmpty()) {
             if ((i>=0) && (i<size)) {
-                while(n.getNext() != null){
-                    n = n.getNext();
+                if (i==0) return first.getInfo();
+                else if (i==size-1) return last.getInfo();
+                else {
+                    for (int j=0;j<i;j++) 
+                        n = n.getNext();
+                    E val = n.getInfo();
+                    return val;
+                    
                 }
             } else throw new IndexOutOfBoundsException();
         } else {
@@ -214,7 +220,6 @@ public class MyLinkedList<E>
 
             throw new NoSuchElementException();
         }
-        return first.getInfo();
     }
     
     // compares this MyLinkedList with the parameter otherList 
@@ -242,6 +247,9 @@ public class MyLinkedList<E>
         test.addLast(3);
         test.addLast(0);
         test.addLast(5);
+        System.out.println("index 0 = " +test.get(0));
+        System.out.println("index 2 = " +test.get(2));
+        System.out.println("index 5 = " +test.get(5));
         System.out.println(test.contains(0));
         System.out.println(test.contains(6));
         test.printListForward();
