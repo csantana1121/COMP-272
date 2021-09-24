@@ -228,17 +228,41 @@ public class MyLinkedList<E>
     // lists can be empty in which case return true
     //should run in O(n) time where n is the size of each list.
     public boolean equals(Object otherList) {
-        return true;
-        
-        
+        if(otherList.getClass().equals(this.getClass())){
+            Node<E> list1 =  first;
+            MyLinkedList<E> compare = (MyLinkedList<E>) otherList;
+            Node<E> list2 = compare.first;
+            if (size==compare.size){
+                if (size == 0 && compare.size == 0)
+                    return true;
+                for(int i = 0;i<size;i++){
+                    if(!list1.getInfo().equals(list2.getInfo()))
+                        return false;
+                    list1 = list1.getNext();
+                    list2 = list2.getNext();
+                }
+                return true;
+
+            } else
+                return false;
+            } else
+                return false;
     }
     
     public static void main(String[] args) {
         MyLinkedList<Integer> test = new MyLinkedList<Integer>();
+        MyLinkedList<Integer> test2 = new MyLinkedList<Integer>();
         System.out.println(test.isEmpty());
         test.addFirst(2);
         test.addFirst(0);
         test.addFirst(1);
+        test2.addFirst(2);
+        test2.addFirst(0);
+        test2.addFirst(2);
+        System.out.println(test.equals(test2));
+        test2.clear();
+        test.clear();
+        System.out.println(test.equals(test2));
         test.printListForward();
         test.printListBackward();
         test.removeFirst();
