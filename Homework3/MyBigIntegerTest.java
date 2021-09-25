@@ -5,5 +5,6 @@ public class MyBigIntegerTest {
         System.out.println(driver.equals(test));
         System.out.println(driver.lessThan(test));
         System.out.println(test.lessThan(driver));
+        MyBigInteger sum = driver.add(test);
     }
 }
