@@ -21,9 +21,23 @@ public class MyBigInteger{
     //add(..) adds this MyBigInteger to other MyBigInteger and returns the sum as a MyBigInteger
     // the original Big Integers don't change.
     public MyBigInteger add(MyBigInteger other) {
-        
-        return this;
-        
+        if (this.bigI.size==0 && other.bigI.size==0){
+            MyBigInteger sum = new MyBigInteger();
+            return sum;
+        } else if(this.bigI.size == 0)
+            return other;
+        else if(other.bigI.size == 0)
+            return this;
+        else{
+            Node<Integer> addend1 = this.bigI.last;
+            Node<Integer> addend2 = other.bigI.last;
+            if(this.bigI.size>other.bigI.size){
+                int diff = this.bigI.size - other.bigI.size;
+            } else{
+
+            }
+
+        }
     }
     
     // returns true if and only if the two big integers are equal
