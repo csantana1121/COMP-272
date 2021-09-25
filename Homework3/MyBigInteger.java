@@ -42,11 +42,23 @@ public class MyBigInteger{
                         carry = 1;
                     }
                     input1.append(sum);
+                    addend1 = addend1.getNext();
+                    addend2 = addend2.getNext();
                 }
                 for(int i = other.bigI.size; i<this.bigI.size;i++){
+                    int sum = addend1.getInfo() + carry;
+                    carry =0;
+                    if(sum >9){
+                        sum = sum%10;
+                        carry = 1;
+                    }
+                    input1.append(sum);
+                    addend1 = addend1.getNext();
 
                 }
-            } else{
+                MyBigInteger sum =  new MyBigInteger(input1.reverse().toString());
+                return sum;
+            } else if(this.bigI.size<other.bigI.size){
 
             }
 
