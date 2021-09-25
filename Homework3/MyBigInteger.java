@@ -73,14 +73,14 @@ public class MyBigInteger{
                     addend2 = addend2.getPrev();
                 }
                 for(int i = this.bigI.size; i<other.bigI.size;i++){
-                    int sum = addend1.getInfo() + carry;
+                    int sum = addend2.getInfo() + carry;
                     carry =0;
                     if(sum >9){
                         sum = sum%10;
                         carry = 1;
                     }
                     input1.append(sum);
-                    addend1 = addend1.getPrev();
+                    addend2 = addend2.getPrev();
 
                 }
                 MyBigInteger total =  new MyBigInteger(input1.reverse().toString());

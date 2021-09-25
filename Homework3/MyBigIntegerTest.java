@@ -6,5 +6,8 @@ public class MyBigIntegerTest {
         System.out.println(driver.lessThan(test));
         System.out.println(test.lessThan(driver));
         MyBigInteger sum = driver.add(test);
+        MyBigInteger lol = new MyBigInteger("777");
+        MyBigInteger sum2 = driver.add(lol);
+        MyBigInteger sum3 = lol.add(driver);
     }
 }
