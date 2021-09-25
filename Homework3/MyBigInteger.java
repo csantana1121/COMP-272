@@ -32,7 +32,20 @@ public class MyBigInteger{
             Node<Integer> addend1 = this.bigI.last;
             Node<Integer> addend2 = other.bigI.last;
             if(this.bigI.size>other.bigI.size){
-                int diff = this.bigI.size - other.bigI.size;
+                int carry = 0;
+                StringBuilder input1 = new StringBuilder();
+                for(int i = 0; i<other.bigI.size;i++){
+                    int sum = addend1.getInfo() + addend2.getInfo() + carry;
+                    carry = 0;
+                    if(sum >9){
+                        sum = sum%10;
+                        carry = 1;
+                    }
+                    input1.append(sum);
+                }
+                for(int i = other.bigI.size; i<this.bigI.size;i++){
+
+                }
             } else{
 
             }
