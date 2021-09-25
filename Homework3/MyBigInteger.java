@@ -59,7 +59,48 @@ public class MyBigInteger{
                 MyBigInteger sum =  new MyBigInteger(input1.reverse().toString());
                 return sum;
             } else if(this.bigI.size<other.bigI.size){
+                int carry = 0;
+                StringBuilder input1 = new StringBuilder();
+                for(int i = 0; i<this.bigI.size;i++){
+                    int sum = addend1.getInfo() + addend2.getInfo() + carry;
+                    carry = 0;
+                    if(sum >9){
+                        sum = sum%10;
+                        carry = 1;
+                    }
+                    input1.append(sum);
+                    addend1 = addend1.getNext();
+                    addend2 = addend2.getNext();
+                }
+                for(int i = this.bigI.size; i<other.bigI.size;i++){
+                    int sum = addend1.getInfo() + carry;
+                    carry =0;
+                    if(sum >9){
+                        sum = sum%10;
+                        carry = 1;
+                    }
+                    input1.append(sum);
+                    addend1 = addend1.getNext();
 
+                }
+                MyBigInteger total =  new MyBigInteger(input1.reverse().toString());
+                return total;
+            } else {
+                int carry = 0;
+                StringBuilder input1 = new StringBuilder();
+                for(int i = 0; i<this.bigI.size;i++){
+                    int sum = addend1.getInfo() + addend2.getInfo() + carry;
+                    carry = 0;
+                    if(sum >9){
+                        sum = sum%10;
+                        carry = 1;
+                    }
+                    input1.append(sum);
+                    addend1 = addend1.getNext();
+                    addend2 = addend2.getNext();
+                }
+                MyBigInteger total =  new MyBigInteger(input1.reverse().toString());
+                return total;
             }
 
         }
