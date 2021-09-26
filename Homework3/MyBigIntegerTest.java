@@ -16,5 +16,6 @@ public class MyBigIntegerTest {
         MyBigInteger addition3 = driver.add(empty);
         System.out.println(driver.equals(addition2));
         System.out.println(driver.equals(addition3));
+        sum.bigI.printListForward();
     }
 }

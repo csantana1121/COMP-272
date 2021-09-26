@@ -15,7 +15,6 @@ public class MyBigInteger{
         char[] chars = p.toCharArray();
         for(int i = 0; i<chars.length;i++)
             bigI.addLast(Character.getNumericValue(chars[i]));
-        bigI.printListForward();
     }
     
     //add(..) adds this MyBigInteger to other MyBigInteger and returns the sum as a MyBigInteger
