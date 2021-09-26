@@ -126,6 +126,8 @@ public class MyBigInteger{
             for(int i = 0; i<this.bigI.size;i++){
                 if(num1.getInfo()<num2.getInfo())
                     return true;
+                else if(num1.getInfo()>num2.getInfo())
+                    return false;
                 num1 = num1.getNext();
                 num2 = num2.getNext();
             }
