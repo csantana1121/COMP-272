@@ -12,8 +12,8 @@ public class test {
         test2.addFirst(0);
         test2.addFirst(2);
         System.out.println(test.equals(test2));
-        test2.clear();
-        test.clear();
+        // test2.clear();
+        // test.clear();
         System.out.println(test.equals(test2));
         test.printListForward();
         test.printListBackward();
@@ -25,7 +25,7 @@ public class test {
         test.addLast(5);
         System.out.println("index 0 = " +test.get(0));
         System.out.println("index 2 = " +test.get(2));
-        System.out.println("index 5 = " +test.get(5));
+        // System.out.println("index 5 = " +test.get(5));
         System.out.println(test.contains(0));
         System.out.println(test.contains(6));
         test.printListForward();
