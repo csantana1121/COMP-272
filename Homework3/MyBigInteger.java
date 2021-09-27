@@ -83,6 +83,7 @@ public class MyBigInteger{
                     addend1 = addend1.getPrev();
 
                 }
+                input1.append(carry);
                 MyBigInteger sum =  new MyBigInteger(input1.reverse().toString());
                 return sum;
             } else if(this.bigI.size<other.bigI.size){
@@ -110,6 +111,7 @@ public class MyBigInteger{
                     addend2 = addend2.getPrev();
 
                 }
+                input1.append(carry);
                 MyBigInteger total =  new MyBigInteger(input1.reverse().toString());
                 return total;
             } else {
@@ -126,6 +128,7 @@ public class MyBigInteger{
                     addend1 = addend1.getPrev();
                     addend2 = addend2.getPrev();
                 }
+                input1.append(carry);
                 MyBigInteger total =  new MyBigInteger(input1.reverse().toString());
                 return total;
             }

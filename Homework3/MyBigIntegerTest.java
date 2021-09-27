@@ -1,7 +1,7 @@
 public class MyBigIntegerTest {
     public static void main(String[] args) {
-        MyBigInteger driver = new MyBigInteger("1434");
-        MyBigInteger test = new MyBigInteger("1235");
+        MyBigInteger driver = new MyBigInteger("999");
+        MyBigInteger test = new MyBigInteger("1");
         System.out.println(driver.equals(test));
         System.out.println(driver.lessThan(test));
         System.out.println(test.lessThan(driver));
