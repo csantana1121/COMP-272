@@ -187,7 +187,6 @@ public class MyBigInteger{
                 StringBuilder input1 = new StringBuilder();
                 for(int i = 0; i<this.bigI.size;i++){
                     int sum = Math.abs(addend1.getInfo()) + Math.abs(addend2.getInfo()) + carry;
-                    System.out.println(sum);
                     carry = 0;
                     if(sum >9){
                         sum = sum%10;
