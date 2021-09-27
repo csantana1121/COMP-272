@@ -10,11 +10,12 @@ public class test {
         test.addFirst(1);
         test2.addFirst(2);
         test2.addFirst(0);
-        test2.addFirst(2);
+        test2.addFirst(1);
         System.out.println(test.equals(test2));
         // test2.clear();
         // test.clear();
         System.out.println(test.equals(test2));
+        System.out.println("object not same" + test.equals(201));
         test.printListForward();
         test.printListBackward();
         test.removeFirst();

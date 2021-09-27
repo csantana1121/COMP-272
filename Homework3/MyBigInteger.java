@@ -11,7 +11,7 @@ public class MyBigInteger{
             return false;
         }
         try {
-            double d = Double.parseDouble(strNum);
+            double d = Integer.parseInt(strNum);
         } catch (NumberFormatException nfe) {
             return false;
         }
@@ -24,9 +24,18 @@ public class MyBigInteger{
     public MyBigInteger(String p) {
         bigI =new MyLinkedList<>();
         if(isNumeric(p)){
+            boolean firstDigit = false;
             char[] chars = p.toCharArray();
-            for(int i = 0; i<chars.length;i++)
-                bigI.addLast(Character.getNumericValue(chars[i]));
+            for(int i = 0; i<chars.length;i++){
+                if(Character.getNumericValue(chars[i]) > 0 && !firstDigit)
+                    firstDigit = true;
+                if(Character.getNumericValue(chars[i]) == -1 && !firstDigit)
+                    bigI.addFirst(Character.getNumericValue(chars[i]));
+                if(firstDigit)
+                    bigI.addLast(Character.getNumericValue(chars[i]));
+            }
+            if(!firstDigit)
+                bigI.addFirst(0);
         } else
             throw new NumberFormatException();
     }
