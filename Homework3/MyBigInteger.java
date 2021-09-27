@@ -58,7 +58,7 @@ public class MyBigInteger{
             Node<Integer> addend2 = other.bigI.last;
             int carry = 0;
             StringBuilder input1 = new StringBuilder();
-            if(this.bigI.size>other.bigI.size){
+            if(this.bigI.size>=other.bigI.size){
                 for(int i = 0; i<other.bigI.size;i++){
                     int sum = Math.abs(addend1.getInfo()) - Math.abs(addend2.getInfo()) - carry;
                     carry = sum < 0 ? 1 : 0;
