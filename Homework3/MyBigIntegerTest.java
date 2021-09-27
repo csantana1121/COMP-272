@@ -11,7 +11,7 @@ public class MyBigIntegerTest {
         MyBigInteger sum3 = lol.add(driver);
         MyBigInteger empty = new MyBigInteger();
         MyBigInteger empty2 = new MyBigInteger();
-        MyBigInteger addition = empty.add(empty2);
+        System.out.println("testing empty" +empty.lessThan(driver));
         MyBigInteger addition2 = empty.add(driver);
         MyBigInteger addition3 = driver.add(empty);
         System.out.println(driver.equals(addition2));

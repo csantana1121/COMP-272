@@ -1,6 +1,7 @@
 public class MyBigInteger{
 
     MyLinkedList<Integer> bigI;
+    boolean isNegative;
     
     public MyBigInteger () {
      
