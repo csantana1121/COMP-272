@@ -45,6 +45,60 @@ public class MyBigInteger{
             throw new NumberFormatException();
     }
     
+    public MyBigInteger sub(MyBigInteger other){
+        if (this.bigI.size==0 && other.bigI.size==0){
+            MyBigInteger sum = new MyBigInteger();
+            return sum;
+        } else if(this.bigI.size == 0)
+            return other;
+        else if(other.bigI.size == 0)
+            return this;
+        else{
+            Node<Integer> addend1 = this.bigI.last;
+            Node<Integer> addend2 = other.bigI.last;
+            int carry = 0;
+            StringBuilder input1 = new StringBuilder();
+            if(this.bigI.size>other.bigI.size){
+                for(int i = 0; i<other.bigI.size;i++){
+                    int sum = addend1.getInfo() - addend2.getInfo() - carry;
+                    carry = sum < 0 ? 1 : 0;
+                    sum = sum + (carry == 1? 10 : 0);
+                    input1.append(sum);
+                    addend1 = addend1.getPrev();
+                    addend2 = addend2.getPrev();
+                }
+                for(int i = other.bigI.size; i<this.bigI.size;i++){
+                    int sum = addend1.getInfo() - carry;
+                    carry = sum < 0 ? 1 : 0;
+                    sum = sum + (carry == 1? 10 : 0);
+                    input1.append(sum);
+                    addend1 = addend1.getPrev();
+                }
+                MyBigInteger sum =  new MyBigInteger(input1.reverse().toString());
+                return sum;
+            } else{
+                boolean isnegative = false;
+                for(int i = 0; i<this.bigI.size;i++){
+                    int sum = addend1.getInfo() - addend2.getInfo() - carry;
+                    input1.append(Math.abs(sum));
+                    if(sum <0)
+                        isnegative = true;
+                    addend1 = addend1.getPrev();
+                    addend2 = addend2.getPrev();
+                }
+                for(int i = this.bigI.size; i<other.bigI.size;i++){
+                    int sum = 0 - addend2.getInfo() - carry;
+                    input1.append(Math.abs(sum));
+                    addend2 = addend2.getPrev();
+                }
+                if(isnegative)
+                    input1.append("-");
+                MyBigInteger sum =  new MyBigInteger(input1.reverse().toString());
+                return sum;
+            }
+
+        }
+    }
     //add(..) adds this MyBigInteger to other MyBigInteger and returns the sum as a MyBigInteger
     // the original Big Integers don't change.
     public MyBigInteger add(MyBigInteger other) {
@@ -118,17 +172,34 @@ public class MyBigInteger{
                 int carry = 0;
                 StringBuilder input1 = new StringBuilder();
                 for(int i = 0; i<this.bigI.size;i++){
-                    int sum = addend1.getInfo() + addend2.getInfo() + carry;
+                    int add1;
+                    int add2;
+                    if(this.bigI.first.getInfo()<0 && addend1.getInfo()>0)
+                        add1 = addend1.getInfo() * -1;
+                    else
+                        add1 = addend1.getInfo();
+                    if(other.bigI.first.getInfo()<0 && addend2.getInfo()>0)
+                        add2 = addend2.getInfo() * -1;
+                    else
+                        add2 = addend2.getInfo();
+                    int sum = add1 + add2 + carry;
                     carry = 0;
                     if(sum >9){
                         sum = sum%10;
                         carry = 1;
                     }
+                    if(sum<0){
+                        sum = Math.abs(sum);
+                        carry = -1;
+                    }
                     input1.append(sum);
                     addend1 = addend1.getPrev();
                     addend2 = addend2.getPrev();
                 }
-                input1.append(carry);
+                if (carry>0)
+                    input1.append(carry);
+                else if (carry <0)
+                    input1.append("-");
                 MyBigInteger total =  new MyBigInteger(input1.reverse().toString());
                 return total;
             }

@@ -18,7 +18,9 @@ public class MyBigIntegerTest {
         System.out.println(driver.equals(addition3));
         sum.bigI.printListForward();
         System.out.println(driver.equals("1434"));
-        MyBigInteger kekw = new MyBigInteger("-123");
-        kekw.bigI.printListForward();
+        MyBigInteger kekw = new MyBigInteger("2");
+        MyBigInteger neg = new MyBigInteger("100");
+        MyBigInteger negsum = kekw.sub(neg);
+        negsum.bigI.printListForward();
     }
 }
