@@ -228,7 +228,7 @@ public class MyLinkedList<E>
     // lists can be empty in which case return true
     //should run in O(n) time where n is the size of each list.
     public boolean equals(Object otherList) {
-        if(otherList.getClass().equals(this.getClass())){
+        if(otherList instanceof MyLinkedList){
             Node<E> list1 =  first;
             MyLinkedList<E> compare = (MyLinkedList<E>) otherList;
             Node<E> list2 = compare.first;

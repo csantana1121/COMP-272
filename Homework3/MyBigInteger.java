@@ -3,8 +3,19 @@ public class MyBigInteger{
     MyLinkedList<Integer> bigI;
     
     public MyBigInteger () {
-        
+     
         bigI =new MyLinkedList<>();
+    }
+    private boolean isNumeric(String strNum) {
+        if (strNum == null) {
+            return false;
+        }
+        try {
+            double d = Double.parseDouble(strNum);
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+        return true;
     }
     
     // takes a numerically valued String p and stores it one digit at a time in the linked list
@@ -12,9 +23,12 @@ public class MyBigInteger{
     // one digit per node. 
     public MyBigInteger(String p) {
         bigI =new MyLinkedList<>();
-        char[] chars = p.toCharArray();
-        for(int i = 0; i<chars.length;i++)
-            bigI.addLast(Character.getNumericValue(chars[i]));
+        if(isNumeric(p)){
+            char[] chars = p.toCharArray();
+            for(int i = 0; i<chars.length;i++)
+                bigI.addLast(Character.getNumericValue(chars[i]));
+        } else
+            throw new NumberFormatException();
     }
     
     //add(..) adds this MyBigInteger to other MyBigInteger and returns the sum as a MyBigInteger
@@ -107,7 +121,7 @@ public class MyBigInteger{
     
     // returns true if and only if the two big integers are equal
     public boolean equals(Object other) {
-        if(other.getClass().equals(this.getClass())){
+        if(other instanceof MyBigInteger){
             MyBigInteger compare = (MyBigInteger) other;
             return this.bigI.equals(compare.bigI);
         } else
