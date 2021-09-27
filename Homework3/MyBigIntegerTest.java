@@ -18,7 +18,7 @@ public class MyBigIntegerTest {
         System.out.println(driver.equals(addition3));
         sum.bigI.printListForward();
         System.out.println(driver.equals("1434"));
-        MyBigInteger kekw = new MyBigInteger("000000");
+        MyBigInteger kekw = new MyBigInteger("-123");
         kekw.bigI.printListForward();
     }
 }

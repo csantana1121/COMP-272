@@ -1,7 +1,6 @@
 public class MyBigInteger{
 
     MyLinkedList<Integer> bigI;
-    boolean isNegative;
     
     public MyBigInteger () {
      
@@ -26,14 +25,19 @@ public class MyBigInteger{
         bigI =new MyLinkedList<>();
         if(isNumeric(p)){
             boolean firstDigit = false;
+            boolean isNegative = false;
             char[] chars = p.toCharArray();
             for(int i = 0; i<chars.length;i++){
                 if(Character.getNumericValue(chars[i]) > 0 && !firstDigit)
                     firstDigit = true;
                 if(Character.getNumericValue(chars[i]) == -1 && !firstDigit)
-                    bigI.addFirst(Character.getNumericValue(chars[i]));
+                    isNegative = true;
                 if(firstDigit)
-                    bigI.addLast(Character.getNumericValue(chars[i]));
+                    if(isNegative){
+                        bigI.addFirst(-Character.getNumericValue(chars[i]));
+                        isNegative = false;
+                    } else
+                        bigI.addLast(Character.getNumericValue(chars[i]));
             }
             if(!firstDigit)
                 bigI.addFirst(0);
