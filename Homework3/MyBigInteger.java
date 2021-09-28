@@ -219,7 +219,7 @@ public class MyBigInteger{
     public boolean lessThan(MyBigInteger other) {
         if(this.bigI.size<other.bigI.size){
             if (this.bigI.size == 0)
-                return false;
+                return true;
             else if(other.bigI.first.getInfo()>0)
                 return true;
             else if(other.bigI.first.getInfo()<0 && this.bigI.first.getInfo() >0)

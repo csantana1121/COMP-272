@@ -13,7 +13,7 @@ public class MyBigIntegerTest {
         MyBigInteger sum3 = lol.add(driver);
         MyBigInteger empty = new MyBigInteger();
         MyBigInteger empty2 = new MyBigInteger();
-        System.out.println("testing empty/neg" + empty.lessThan(lol));
+        System.out.println("testing empty/neg" + empty.lessThan(driver));
         MyBigInteger addition2 = empty.add(driver);
         MyBigInteger addition3 = driver.add(empty);
         System.out.println(driver.equals(addition2));
