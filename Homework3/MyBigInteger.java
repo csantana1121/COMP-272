@@ -218,23 +218,26 @@ public class MyBigInteger{
     
     public boolean lessThan(MyBigInteger other) {
         if(this.bigI.size<other.bigI.size){
-
-            if(other.bigI.first.getInfo()>0)
+            if (this.bigI.size == 0)
+                return false;
+            else if(other.bigI.first.getInfo()>0)
                 return true;
             else if(other.bigI.first.getInfo()<0 && this.bigI.first.getInfo() >0)
                 return false;
             else if(other.bigI.first.getInfo()<0 && this.bigI.first.getInfo() < 0) 
-                return true;
+                return false;
             else
                 return false;
         }
         else if (this.bigI.size>other.bigI.size){
-            if(this.bigI.first.getInfo()>0)
+            if (other.bigI.size == 0)  
+                return true;
+            else if(this.bigI.first.getInfo()>0)
                 return false;
             else if(this.bigI.first.getInfo()<0 && other.bigI.first.getInfo() >0)
                 return true;
             else if(this.bigI.first.getInfo()<0 && other.bigI.first.getInfo() < 0) 
-                return false;
+                return true;
             else
                 return true;
         }
