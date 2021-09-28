@@ -217,10 +217,27 @@ public class MyBigInteger{
     // returns true if and only if this MyBigInteger is less than other MyBigInteger
     
     public boolean lessThan(MyBigInteger other) {
-        if(this.bigI.size<other.bigI.size)
-            return true;
-        else if (this.bigI.size>other.bigI.size)
-            return false;
+        if(this.bigI.size<other.bigI.size){
+
+            if(other.bigI.first.getInfo()>0)
+                return true;
+            else if(other.bigI.first.getInfo()<0 && this.bigI.first.getInfo() >0)
+                return false;
+            else if(other.bigI.first.getInfo()<0 && this.bigI.first.getInfo() < 0) 
+                return true;
+            else
+                return false;
+        }
+        else if (this.bigI.size>other.bigI.size){
+            if(this.bigI.first.getInfo()>0)
+                return false;
+            else if(this.bigI.first.getInfo()<0 && other.bigI.first.getInfo() >0)
+                return true;
+            else if(this.bigI.first.getInfo()<0 && other.bigI.first.getInfo() < 0) 
+                return false;
+            else
+                return true;
+        }
         else{
             Node<Integer> num1 = this.bigI.first;
             Node<Integer> num2 = other.bigI.first;
