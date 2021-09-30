@@ -16,10 +16,26 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
         Node<E> node  = root;
         if(node == null)
             return false;
-        else if (node.getInfo()== val){
-            return true;
-        } else {
-            
+        else{
+            if(node.getInfo() == val){
+                return true;
+            } else{
+                while(node.getNext()!=null){
+                    if(node.getInfo().compareTo(val)> 0){  
+                        if(node.getRight() == null)
+                            return false;
+                        else
+                            node = node.getRight();
+                    } else if( node.getInfo().compareTo(val)<0){
+                        if(node.getLeft() == null)
+                            return false;
+                        else
+                            node = node.getLeft();
+                    } else {
+                        return true;
+                    }
+                }
+            }
         }
        
    }
