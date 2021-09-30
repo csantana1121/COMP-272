@@ -20,7 +20,7 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
             if(node.getInfo() == val){
                 return true;
             } else{
-                while(node.getNext()!=null){
+                while(node != null){
                     if(node.getInfo().compareTo(val)> 0){  
                         if(node.getRight() == null)
                             return false;
@@ -47,10 +47,13 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
         if (size == 0)
             root = node;
         else if (!this.contains(val)){
-            
+            node = root;
+            while(node != null){
+                if(node.getInfo().compareTo(val)>0){
+                    
+                }
+            }   
         }
-
-
         }
 
 // returns the minimum value stored in the tree
