@@ -21,12 +21,12 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
                 return true;
             } else{
                 while(node != null){
-                    if(node.getInfo().compareTo(val)> 0){  
+                    if(node.getInfo().compareTo(val)< 0){  
                         if(node.getRight() == null)
                             return false;
                         else
                             node = node.getRight();
-                    } else if( node.getInfo().compareTo(val)<0){
+                    } else if( node.getInfo().compareTo(val)>0){
                         if(node.getLeft() == null)
                             return false;
                         else
@@ -48,8 +48,7 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
         if (size == 0){
             root = node;
             size++;
-        }
-        else if (!this.contains(val)){
+        } else if (!this.contains(val)){
             node = root;
             while(node != null){
                 if(node.getInfo().compareTo(val)<0){
@@ -71,33 +70,47 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
                     }
                 }
             }   
-        }
+        } 
         }
 
 // returns the minimum value stored in the tree
 public E findMin() {
-    return this.root.getInfo();
+    Node<E> node = root;
+    if (node ==null)
+        return null;
+    while (node.getLeft() != null){
+        node= node.getLeft();
+    }
+    return node.getInfo();
 
 }
 
 // returns the maximum value stored in the tree
 public E findMax() {
-    return this.root.getInfo();
+    Node<E> node = root;
+    if (node ==null)
+        return null;
+    while (node.getRight() != null){
+        node= node.getRight();
+    }
+    return node.getInfo();
 }
    
    public static void main(String[] args) {
        BinarySearchTree<Integer> bt= new BinarySearchTree<>();
        bt.insert(5);
-       System.out.println(bt.contains(5));
        bt.insert(10);
     //    bt.inOrder(bt.root);
-       System.out.println(bt.root.right.getInfo());
+    //    System.out.println(bt.root.right.getInfo());
        bt.insert(3);
-       System.out.println(bt.root.left.getInfo());
+       bt.insert(3);
        bt.insert(20);
        bt.insert(8);
        bt.insert(4);
+    //    System.out.println(bt.root.right.right.getInfo());
        bt.inOrder(bt.root);
+       System.out.println("Lowest value:" + bt.findMin());
+       System.out.println("Highest value:" + bt.findMax());
    }
    
             
