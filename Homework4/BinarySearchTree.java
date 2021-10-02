@@ -35,6 +35,7 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
                         return true;
                     }
                 }
+                return false;
             }
         }
        
@@ -44,13 +45,30 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
    public void insert(E val) {
         
         Node<E> node = new Node(val);
-        if (size == 0)
+        if (size == 0){
             root = node;
+            size++;
+        }
         else if (!this.contains(val)){
             node = root;
             while(node != null){
+                if(node.getInfo().compareTo(val)<0){
+                    if (node.getRight()!= null)
+                        node = node.getRight();
+                    else{
+                        this.addRight(node, val);
+                        size++;
+                        return;
+                    }
+                }
                 if(node.getInfo().compareTo(val)>0){
-                    
+                    if (node.getLeft() != null)
+                        node = node.getLeft();
+                    else{
+                        this.addLeft(node, val);
+                        size++;
+                        return;
+                    }
                 }
             }   
         }
@@ -58,21 +76,28 @@ public class BinarySearchTree<E extends Comparable<E>> extends BinaryTree<E> {
 
 // returns the minimum value stored in the tree
 public E findMin() {
+    return this.root.getInfo();
 
 }
 
 // returns the maximum value stored in the tree
 public E findMax() {
+    return this.root.getInfo();
 }
    
    public static void main(String[] args) {
        BinarySearchTree<Integer> bt= new BinarySearchTree<>();
        bt.insert(5);
+       System.out.println(bt.contains(5));
        bt.insert(10);
+    //    bt.inOrder(bt.root);
+       System.out.println(bt.root.right.getInfo());
        bt.insert(3);
+       System.out.println(bt.root.left.getInfo());
        bt.insert(20);
        bt.insert(8);
        bt.insert(4);
+       bt.inOrder(bt.root);
    }
    
             

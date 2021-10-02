@@ -79,7 +79,8 @@ public class BinaryTree<E> {
        bt.addRight(n1,"y");
        bt.addLeft(n2,"y");
        bt.addRight(n2,"z");
-       bt.postOrder(bt.root);
+    //    bt.postOrder(bt.root);
+       bt.inOrder(bt.root);
     }
     
 }
