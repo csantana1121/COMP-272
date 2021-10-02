@@ -105,6 +105,8 @@ public E findMax() {
        bt.insert(3);
        bt.insert(3);
        bt.insert(20);
+       bt.insert(324);
+       bt.insert(-6);
        bt.insert(8);
        bt.insert(4);
     //    System.out.println(bt.root.right.right.getInfo());
