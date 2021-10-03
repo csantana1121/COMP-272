@@ -113,6 +113,14 @@ public E findMax() {
        bt.inOrder(bt.root);
        System.out.println("Lowest value:" + bt.findMin());
        System.out.println("Highest value:" + bt.findMax());
+       BinarySearchTree<String> bst = new BinarySearchTree<>();
+       bst.insert("string");
+       bst.insert("String");
+       bst.insert("String");
+       bst.insert("kappa");
+       bst.inOrder(bst.root);
+       System.out.println("Lowest value:" + bst.findMin());
+       System.out.println("Highest value:" + bst.findMax());
    }
    
             
