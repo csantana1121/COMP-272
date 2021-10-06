@@ -3,12 +3,17 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
     // construct an empty Heap using ArrayList
     // with root at index 0.
     // don't use binary tree for implementing the heap.
+    ArrayList<E> arr;
+
     public MaxHeap(){
-            
+            arr = new ArrayList<E>();
     }
     // returns max value
     public E findMax() {
-        
+        if(arr.size() == 0){
+            throw new NoSuchElementException();
+        } else
+            return arr.get(0);
     }
     
     // adds a new value to the heap at the end of the Heap and 
@@ -25,7 +30,16 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
     // bounds of the Heap index, namely, 0 ... size()-1.
     // throw appropriate exception
     public E removeHeap() {
-        
+        if(arr.size() == 0){
+            throw new NoSuchElementException();
+        } else if (arr.size() == 1) {
+            return arr.remove(0);
+        }
+
+        E temp = arr.get(0);
+        arr.set(0, arr.remove(arr.size()-1));
+        //siftDown();
+        return temp;
     }
     
     // takes a list of items E and builds the heap and then prints 
@@ -44,5 +58,9 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
         
     }
 
+    public static void main(String[] args) {
+        MaxHeap<Integer> heaper = new MaxHeap<>();
+        System.out.println(heaper.removeHeap());
+    }
     
 }
