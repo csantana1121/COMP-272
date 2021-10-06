@@ -21,7 +21,20 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
     // parent of node at i is given by the formula (i-1)/2
     // throw appropriate exception
     public void addHeap(E val) {
-        
+        arr.add(val);
+        int child  = arr.size() - 1;
+
+        while(child > 0){
+            int parent = (child-1)/2;
+            E c = arr.get(child);
+            E p = arr.get(parent);
+            if(c.compareTo(p)>0){
+                arr.set(child, p);
+                arr.set(parent,c);
+                child = parent;
+            } else
+                child = 0;
+        }
     }
     
     //returns the max value at the root of the heap by swapping the last value 
@@ -34,12 +47,12 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
             throw new NoSuchElementException();
         } else if (arr.size() == 1) {
             return arr.remove(0);
+        } else{
+            E temp = arr.get(0);
+            arr.set(0, arr.remove(arr.size()-1));
+            //siftDown();
+            return temp;
         }
-
-        E temp = arr.get(0);
-        arr.set(0, arr.remove(arr.size()-1));
-        //siftDown();
-        return temp;
     }
     
     // takes a list of items E and builds the heap and then prints 
@@ -60,7 +73,13 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
 
     public static void main(String[] args) {
         MaxHeap<Integer> heaper = new MaxHeap<>();
-        System.out.println(heaper.removeHeap());
+        heaper.addHeap(10);
+        heaper.addHeap(13);
+        heaper.addHeap(1);
+        heaper.addHeap(321);
+        heaper.addHeap(43);
+        heaper.addHeap(8);
+        System.out.println(heaper.arr);
     }
     
 }
