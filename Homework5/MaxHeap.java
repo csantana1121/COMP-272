@@ -74,11 +74,13 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
     public static void main(String[] args) {
         MaxHeap<Integer> heaper = new MaxHeap<>();
         heaper.addHeap(10);
+        System.out.println("max:" + heaper.removeHeap());
         heaper.addHeap(13);
         heaper.addHeap(1);
         heaper.addHeap(321);
         heaper.addHeap(43);
         heaper.addHeap(8);
+        heaper.addHeap(1);
         System.out.println(heaper.arr);
     }
     
