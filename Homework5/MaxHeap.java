@@ -15,6 +15,10 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
         } else
             return arr.get(0);
     }
+
+    public int size(){
+        return arr.size();
+    }
     
     // adds a new value to the heap at the end of the Heap and 
     // adjusts values up to the root to ensure Max heap property is satisfied.
@@ -50,7 +54,27 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
         } else{
             E temp = arr.get(0);
             arr.set(0, arr.remove(arr.size()-1));
-            //siftDown();
+            int curr = 0;
+            int leftchild = 1;
+            while( leftchild<arr.size()){
+                int max = leftchild;
+                int rightchild  = leftchild +1;
+                if (rightchild < arr.size()){
+                    if(arr.get(rightchild).compareTo(arr.get(leftchild))> 0){
+                        max = rightchild;
+                    }
+                }
+                E parent = arr.get(curr);
+                E child = arr.get(max);
+                if(child.compareTo(parent)>0){
+                    arr.set(max, parent);
+                    arr.set(curr, child);
+                    curr = max;
+                    leftchild = (2*curr) +1;
+                } else
+                    leftchild = arr.size();
+
+            }
             return temp;
         }
     }
@@ -58,17 +82,24 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
     // takes a list of items E and builds the heap and then prints 
     // decreasing values of E with calls to removeHeap().  
     public void heapSort(List<E> list){
-        
+        this.buildHeap(list);
+        while(arr.size()>0){
+            this.removeHeap();
+        }
     }
     
     // merges the other maxheap with this maxheap to produce a new maxHeap.  
     public void heapMerge(MaxHeap<E> other){
-        
+        for(int i = 0; i<other.size();i++){
+            this.addHeap(other.removeHeap());
+        }
     }
     
     //takes a list of items E and builds the heap by calls to addHeap(..)
     public void buildHeap(List<E> list) {
-        
+        for(E element:list){
+            this.addHeap(element);
+        }
     }
 
     public static void main(String[] args) {
@@ -81,7 +112,9 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
         heaper.addHeap(43);
         heaper.addHeap(8);
         heaper.addHeap(1);
+        System.out.println("max:" + heaper.removeHeap());
         System.out.println(heaper.arr);
+        System.out.println(heaper.size());
     }
     
 }
