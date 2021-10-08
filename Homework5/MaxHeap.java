@@ -83,7 +83,7 @@ public class MaxHeap<E extends Comparable<E>> extends ArrayList<E>   {
     // decreasing values of E with calls to removeHeap().  
     public void heapSort(List<E> list){
         this.buildHeap(list);
-        while(arr.size()>0){
+        while(this.size()>0){
             System.out.println(this.removeHeap());
         }
     }
