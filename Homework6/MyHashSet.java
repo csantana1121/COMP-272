@@ -45,10 +45,14 @@ public class MyHashSet<E> {
 
     public double calavgsize(){
         double avg = 0;
+        int size = hashtable.size();
         for(int i = 0; i <tableSize;i++){
             avg += hashtable.get(i).size();
+            if (hashtable.get(i).size() == 0){
+                size--;
+            }
         }
-        avg = avg / tableSize;
+        avg = avg / size;
         return avg;
     }
 
@@ -73,8 +77,8 @@ public class MyHashSet<E> {
         }
     public static void main(String[] args) {
         MyHashSet<String> method1 = new MyHashSet<>(262127);
-        System.out.println(method1.tableSize);
-        System.out.println(method1.hashtable.size());
+        // System.out.println(method1.tableSize);
+        // System.out.println(method1.hashtable.size());
         MyHashSet<String> method2 = new MyHashSet<>(262127);
         File text = new File("EnglishWordList.txt");
         HashSet<String> hs = new HashSet<String>();
