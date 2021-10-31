@@ -56,7 +56,7 @@ public class MyHashSet<E> {
         return avg;
     }
 
-    public int H(String s) {
+    public void HashMethod3(String s) {
         byte[] sb=s.getBytes();
         byte[] key=  null;
          try {
@@ -67,19 +67,27 @@ public class MyHashSet<E> {
          e.printStackTrace();
          }
         BitSet bs = BitSet.valueOf(key);
+        int hash = bs.nextSetBit(2) + bs.nextSetBit(7) + bs.nextSetBit(17) + bs.nextSetBit(29) + bs.nextSetBit(41) + bs.nextSetBit(53) + bs.nextSetBit(67) + bs.nextSetBit(79) + bs.nextSetBit(97) + bs.nextSetBit(107) + bs.nextSetBit(127) + bs.nextSetBit(139) + bs.nextSetBit(157) + bs.nextSetBit(173) + bs.nextSetBit(191) + bs.nextSetBit(199) + bs.nextSetBit(227) + bs.nextSetBit(239);
+
+        LinkedList<String> hold = hashtable.get(hash);
+        if (hold.size() > 0){
+            collisions++;
+        }
+        hold.add(s);
+        hashtable.set(hash, hold);
         // using the BitSet bs, you will extract 18 bits based on the
         //get() method of BitSet. The 18 bits are extracted at the first
         //18 prime numbers 2, 7,17,29,41,53,67,79,97,107,127,139,157,
         //173,191, 199,227,239. Put the bits together in that //order to
         //form an integer and return it. That will be the hash //value of
         //the key that you can use in the table of size 2^18.
-        return  0;
         }
     public static void main(String[] args) {
         MyHashSet<String> method1 = new MyHashSet<>(262127);
         // System.out.println(method1.tableSize);
         // System.out.println(method1.hashtable.size());
         MyHashSet<String> method2 = new MyHashSet<>(262127);
+        MyHashSet<String> method3 = new MyHashSet<>(262144);
         File text = new File("EnglishWordList.txt");
         HashSet<String> hs = new HashSet<String>();
         try{
@@ -94,11 +102,14 @@ public class MyHashSet<E> {
         for(String word: hs){
             method1.HashMethod1(word);
             method2.HashMethod2(word);
+            method3.HashMethod3(word);
         }
         System.out.println(hs.size());
         System.out.println(method1.collisions);
         System.out.println(method1.calavgsize());
         System.out.println("Method 2 " +method2.collisions);
         System.out.println(method2.calavgsize());
+        System.out.println("method 3 " + method3.collisions);
+        System.out.println("method 3 " + method3.calavgsize());
     }
 }
