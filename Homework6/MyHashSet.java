@@ -67,8 +67,12 @@ public class MyHashSet<E> {
          e.printStackTrace();
          }
         BitSet bs = BitSet.valueOf(key);
+        String arr = bs.toString();
+        System.out.println(bs);
+        System.out.println(arr);
+        System.out.println(bs.nextSetBit(2));
         int hash = bs.nextSetBit(2) + bs.nextSetBit(7) + bs.nextSetBit(17) + bs.nextSetBit(29) + bs.nextSetBit(41) + bs.nextSetBit(53) + bs.nextSetBit(67) + bs.nextSetBit(79) + bs.nextSetBit(97) + bs.nextSetBit(107) + bs.nextSetBit(127) + bs.nextSetBit(139) + bs.nextSetBit(157) + bs.nextSetBit(173) + bs.nextSetBit(191) + bs.nextSetBit(199) + bs.nextSetBit(227) + bs.nextSetBit(239);
-
+        // hash =  Math.abs(hash % tableSize);
         LinkedList<String> hold = hashtable.get(hash);
         if (hold.size() > 0){
             collisions++;
