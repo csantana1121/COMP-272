@@ -77,7 +77,12 @@ public class MyHashSet<E> {
         // System.out.println(bs.length());
         // System.out.println(str.length());
         // System.out.println(bs.nextSetBit(2));
-        String hashkey = str.substring(0,0) + str.charAt(1) + str.charAt(2) + str.charAt(3) + str.charAt(4) + str.charAt(5) + str.charAt(6) + str.charAt(7) + str.charAt(8) + str.charAt(9) + str.charAt(10) + str.charAt(11) + str.charAt(12) + str.charAt(13) + str.charAt(14) + str.charAt(15) + str.charAt(16) + str.charAt(17);
+        String hashkey = str.substring(2,2) + str.charAt(7) + str.charAt(17) + str.charAt(29) + str.charAt(41) + str.charAt(53) + str.charAt(67) + str.charAt(79) + str.charAt(97) + str.charAt(107) + str.charAt(127) + str.charAt(139) + str.charAt(157) + str.charAt(173) + str.charAt(191) + str.charAt(199) + str.charAt(227);
+        try{
+           hashkey += str.charAt(239); 
+        } catch (StringIndexOutOfBoundsException ex){
+            hashkey += "0";
+        }
         // hash =  Math.abs(hash % tableSize);
         // System.out.println(hashkey);
         int hash = Integer.parseInt(hashkey, 2);
@@ -96,9 +101,11 @@ public class MyHashSet<E> {
         }
     public static void main(String[] args) {
         MyHashSet<String> method1 = new MyHashSet<>(262127);
+        MyHashSet<String> method1large = new MyHashSet<>(524287);
         // System.out.println(method1.tableSize);
         // System.out.println(method1.hashtable.size());
         MyHashSet<String> method2 = new MyHashSet<>(262127);
+        MyHashSet<String> method2large = new MyHashSet<>(524287);
         MyHashSet<String> method3 = new MyHashSet<>(262144);
         File text = new File("EnglishWordList.txt");
         HashSet<String> hs = new HashSet<String>();
@@ -113,14 +120,20 @@ public class MyHashSet<E> {
         }
         for(String word: hs){
             method1.HashMethod1(word);
+            method1large.HashMethod1(word);
             method2.HashMethod2(word);
+            method2large.HashMethod2(word);
             method3.HashMethod3(word);
         }
         System.out.println(hs.size());
         System.out.println(method1.collisions);
         System.out.println(method1.calavgsize());
+        System.out.println("Method1 x2size " +method1large.collisions);
+        System.out.println("Method 1 x2size " + method1large.calavgsize());
         System.out.println("Method 2 " +method2.collisions);
         System.out.println("Method 2 " + method2.calavgsize());
+        System.out.println("Method 2 x2size " +method2large.collisions);
+        System.out.println("Method 2 x2size " + method2large.calavgsize());
         System.out.println("method 3 " + method3.collisions);
         System.out.println("method 3 " + method3.calavgsize());
     }
