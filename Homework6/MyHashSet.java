@@ -67,12 +67,20 @@ public class MyHashSet<E> {
          e.printStackTrace();
          }
         BitSet bs = BitSet.valueOf(key);
-        String arr = bs.toString();
-        System.out.println(bs);
-        System.out.println(arr);
-        System.out.println(bs.nextSetBit(2));
-        int hash = bs.nextSetBit(2) + bs.nextSetBit(7) + bs.nextSetBit(17) + bs.nextSetBit(29) + bs.nextSetBit(41) + bs.nextSetBit(53) + bs.nextSetBit(67) + bs.nextSetBit(79) + bs.nextSetBit(97) + bs.nextSetBit(107) + bs.nextSetBit(127) + bs.nextSetBit(139) + bs.nextSetBit(157) + bs.nextSetBit(173) + bs.nextSetBit(191) + bs.nextSetBit(199) + bs.nextSetBit(227) + bs.nextSetBit(239);
+        StringBuilder str = new StringBuilder();
+        for( int i = 0; i < bs.length();  i++ )
+        {
+            str.append( bs.get( i ) == true ? 1: 0 );
+        }
+        // System.out.println(bs);
+        // System.out.println(str);
+        System.out.println(bs.length());
+        // System.out.println(str.length());
+        // System.out.println(bs.nextSetBit(2));
+        String hashkey = str.substring(2,2) + str.charAt(7) + str.charAt(17) + str.charAt(29) + str.charAt(41) + str.charAt(53) + str.charAt(67) + str.charAt(79) + str.charAt(97) + str.charAt(107) + str.charAt(127) + str.charAt(139) + str.charAt(157) + str.charAt(173) + str.charAt(191) + str.charAt(199) + str.charAt(227) + str.charAt(239);
         // hash =  Math.abs(hash % tableSize);
+        // System.out.println(hashkey);
+        int hash = Integer.parseInt(hashkey, 2);
         LinkedList<String> hold = hashtable.get(hash);
         if (hold.size() > 0){
             collisions++;
