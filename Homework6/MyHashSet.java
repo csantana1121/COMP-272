@@ -52,7 +52,7 @@ public class MyHashSet<E> {
         return avg;
     }
 
-    public int hashCode(String s) {
+    public int H(String s) {
         byte[] sb=s.getBytes();
         byte[] key=  null;
          try {
