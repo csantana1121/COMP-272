@@ -7,6 +7,7 @@ public class MyHashSet<E> {
     ArrayList<LinkedList<String>> hashtable;
     int collisions;
     int tableSize;
+    long time;
 
     public MyHashSet(int size) {
         hashtable = new ArrayList<LinkedList<String>>(size);
@@ -115,25 +116,43 @@ public class MyHashSet<E> {
             ex.printStackTrace();
         }
         for(String word: hs){
+            long timestart = System.currentTimeMillis();
             method1.HashMethod1(word);
+            method1.time += System.currentTimeMillis() - timestart;
+            timestart = System.currentTimeMillis();
             method1large.HashMethod1(word);
+            method1large.time += System.currentTimeMillis() - timestart;
+            timestart = System.currentTimeMillis();
             method2.HashMethod2(word);
+            method2.time += System.currentTimeMillis() - timestart;
+            timestart = System.currentTimeMillis();
             method2large.HashMethod2(word);
+            method2large.time += System.currentTimeMillis() - timestart;
+            timestart = System.currentTimeMillis();
             method3.HashMethod3(word);
+            method3.time += System.currentTimeMillis() - timestart;
+            timestart = System.currentTimeMillis();
             method3large.HashMethod3(word);
+            method3large.time += System.currentTimeMillis() - timestart;
         }
         System.out.println(hs.size());
-        System.out.println(method1.collisions);
-        System.out.println(method1.calavgsize());
+        System.out.println("Method1 " + method1.collisions);
+        System.out.println("Method1 " + method1.calavgsize());
+        System.out.println("Method1 " + method1.time);
         System.out.println("Method1 x2size " +method1large.collisions);
         System.out.println("Method 1 x2size " + method1large.calavgsize());
+        System.out.println("Method 1 x2size " + method1large.time);
         System.out.println("Method 2 " +method2.collisions);
         System.out.println("Method 2 " + method2.calavgsize());
+        System.out.println("Method 2 " + method2.time);
         System.out.println("Method 2 x2size " +method2large.collisions);
         System.out.println("Method 2 x2size " + method2large.calavgsize());
+        System.out.println("Method 2 x2size " + method2large.time);
         System.out.println("method 3 " + method3.collisions);
         System.out.println("method 3 " + method3.calavgsize());
+        System.out.println("Method 3 " + method1.time);
         System.out.println("method 3 x2size " + method3large.collisions);
         System.out.println("method 3 x2size " + method3large.calavgsize());
+        System.out.println("Method 3 x2size " + method1.time);
     }
 }
