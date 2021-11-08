@@ -16,7 +16,7 @@ public class Selection <E extends Comparable<E>> {
             arr.add(inp.get(i));
         }
         Collections.sort(arr);
-        System.out.println(arr);
+        // System.out.println(arr);
         for(int i = k; i<inp.size();i++){
             E newval = inp.get(i);
             if(newval.compareTo(arr.get(0))> 0){
@@ -68,5 +68,35 @@ public class Selection <E extends Comparable<E>> {
         System.out.println(driver.OneB(4, inp));
         System.out.println(driver.SixA(4, inp));
         System.out.println(driver.SixB(4, inp));
+        ArrayList<Integer> million = new ArrayList<>();
+        ArrayList<Integer> Tenmillion = new ArrayList<>();
+        Random rd = new Random();
+        for(int i = 0; i<1000000;i++){
+            million.add(rd.nextInt());
+        }
+        for(int i = 0; i<10000000;i++){
+            Tenmillion.add(rd.nextInt());
+        }
+        // System.out.println(million.get(0));
+        // System.out.println(Tenmillion.size());
+        long timestart = System.currentTimeMillis();
+        System.out.println(driver.OneB(100000,million));
+        System.out.println("time : " + (System.currentTimeMillis() - timestart));
+        timestart = System.currentTimeMillis();
+        System.out.println(driver.SixA(100000,million));
+        System.out.println("time : " + (System.currentTimeMillis() - timestart));
+        timestart = System.currentTimeMillis();
+        System.out.println(driver.SixB(100000,million));
+        System.out.println("time : " + (System.currentTimeMillis() - timestart));
+        System.out.println("Collecting for Ten Million:");
+        // timestart = System.currentTimeMillis();
+        // System.out.println(driver.OneB(1000000,Tenmillion));
+        // System.out.println("time : " + (System.currentTimeMillis() - timestart));
+        timestart = System.currentTimeMillis();
+        System.out.println(driver.SixA(1000000,Tenmillion));
+        System.out.println("time : " + (System.currentTimeMillis() - timestart));
+        timestart = System.currentTimeMillis();
+        System.out.println(driver.SixB(1000000,Tenmillion));
+        System.out.println("time : " + (System.currentTimeMillis() - timestart));
     }
     }
