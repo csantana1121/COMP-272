@@ -1,57 +1,49 @@
 
-public class Node <E>{
+
+public class Node<E> // E is any object type
+{
+    E info;
+    Node<E> prev;
+    Node<E> next;
     
-    Node<E> left;
-    Node<E> right;
-    Node<E> parent;
-    E  info;
-    
-    public Node(Node<E> le, Node<E> ri, Node<E> pa){
-        left=le;
-        right=ri;
-        parent=pa;
+    public Node()
+    {
+       info=null;
+       prev=null;
+       next=null;
     }
     
-    public Node(E val){
-        left=null;
-        right=null;
-        parent=null;
-        info=val;
+    public void setNext(Node<E> n){
+       next = n; 
+        
     }
     
-    public Node(){
-        left=null;
-        right=null;
-        parent=null;
-        info=null;
+    public void setPrev(Node<E> p){
+        prev=p;
     }
     
-    public void addLeft(Node<E> le) {
-       left=le; 
-       le.addParent(this);
-    }
-    
-    public void addRight(Node<E> ri) {   
-      right=ri;  
-      ri.addParent(this);
-    }
-    
-    public void addParent(Node<E> pa){
-     parent=pa; 
-    }
-    
-    public void setInfo(E val){
-        info=val;
+    public void setInfo(E val) {
+        
+        info =val;
     }
     
     public E getInfo() {
-       return info; 
+        
+        return info;
+        
     }
     
-    public Node<E> getLeft(){
-        return left;
+    public Node<E> getNext() {
+        return next;
+        
     }
-    public Node<E> getRight(){
-        return right;
+      public Node<E> getPrev() {
+        return prev;
+        
     }
+    
+
+    
+
+    
 }
