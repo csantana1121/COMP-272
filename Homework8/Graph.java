@@ -82,6 +82,7 @@ public class Graph
             // System.out.println(i);
             // MyLinkedList hold = graph.get(i);
             // System.out.println(hold.size);
+            System.out.println(graph.get(i).size());
             if (graph.get(i).size() > largest)
                 largest = graph.get(i).size();
         }
