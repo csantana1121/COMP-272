@@ -5,7 +5,6 @@ public class Graph
     int numVertex;
     int numEdge;
     ArrayList<MyLinkedList<Integer>> graph;
-    LinkedList<Integer> queue = new LinkedList<Integer>();
     
     public Graph () {
         numVertex =0;
@@ -58,6 +57,7 @@ public class Graph
         boolean[] visited = new boolean[numVertex];
         int cc = 0;
         for (int v = 0; v < numVertex; ++v) {
+            // System.out.println(graph.get(v).size());
             if (!visited[v]) {
                 DFS(v, visited);
                 cc++;
@@ -76,7 +76,17 @@ public class Graph
                 DFS(val, visited);
         }
     }
-
+    public void LargestComponent(){
+        int largest = 0;
+        for (int i = 0;i<numVertex;i++) {
+            // System.out.println(i);
+            // MyLinkedList hold = graph.get(i);
+            // System.out.println(hold.size);
+            if (graph.get(i).size() > largest)
+                largest = graph.get(i).size();
+        }
+        System.out.println("Largest Connected Component = " + largest);
+    }
     public void BFSNumofConnectedComponents(){
         boolean[] visited = new boolean[numVertex];
         int cc = 0;
@@ -143,8 +153,9 @@ public class Graph
         } catch ( FileNotFoundException ex){
             ex.printStackTrace();
         }
-        System.out.println(driver.numEdge);
-        System.out.println(driver.numVertex);
+        System.out.println("Number of edges " + driver.numEdge);
+        System.out.println("Number of vertices " + driver.numVertex);
+        driver.LargestComponent();
         driver.DFSNumofConnectedComponents();
         driver.BFSNumofConnectedComponents();;
 
