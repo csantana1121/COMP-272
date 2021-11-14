@@ -4,11 +4,13 @@ public class Graph
 {
     int numVertex;
     int numEdge;
+    int large;
     ArrayList<MyLinkedList<Integer>> graph;
     
     public Graph () {
         numVertex =0;
         numEdge =0;
+        large =0; 
         graph = new ArrayList<>();
         
     }
@@ -17,6 +19,7 @@ public class Graph
         
         numVertex=vertexCount;
         numEdge=0;
+        large= 0;
         graph = new ArrayList<>(numVertex);
         for (int i=0;i<numVertex;i++){
         graph.add(i,new MyLinkedList<>());
@@ -58,18 +61,25 @@ public class Graph
         int cc = 0;
         for (int v = 0; v < numVertex; ++v) {
             // System.out.println(graph.get(v).size());
+            int temp = large;
             if (!visited[v]) {
+                large = 0;
                 DFS(v, visited);
                 cc++;
+                if(temp>large){
+                    large = temp;
+                }
                 // System.out.println();
             }
         }
         System.out.println("Connected Components = " + cc);
+        System.out.println("Largest Connected Component " + large);
     }
 
     public void DFS(int v, boolean[] visited){
         visited[v] = true;
         // System.out.print(v + " ");
+        large ++;
         for (int i = 0;i<graph.get(v).size();i++) {
             int val = graph.get(v).get(i);
             if (!visited[val])
@@ -82,7 +92,7 @@ public class Graph
             // System.out.println(i);
             // MyLinkedList hold = graph.get(i);
             // System.out.println(hold.size);
-            System.out.println(graph.get(i).size());
+            // System.out.println(graph.get(i).size());
             if (graph.get(i).size() > largest)
                 largest = graph.get(i).size();
         }
