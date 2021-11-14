@@ -1,0 +1,62 @@
+1.dfs
+2.bfs
+3.sets union and find
+
+For this question could use:
+ArrayList<ArrayList<E>>
+ArrayList<LinkedList<Integer>>
+
+To read in values use MyLinkedList can merge lists by add pointer to prev and next
+for the first and last elements of the two lists.
+
+Two methods find() and merge()
+
+what find (x) does is given a vertex x, returns the set number it belongs to
+
+what merge(a,b) does is, given two sets with integers a and b representing them, combines the
+two sets into a single set with a single label which is hte smaller of a and b.
+
+the second one takes linear time.
+
+method find(X){
+return array[x]
+}
+
+O(1) time
+
+method merge(a,b){
+
+i = min(a,b); j = max(a,b);
+for k = 0 to n-1 do
+if array[k] == j, then array[k] = i;
+} O(n) time
+
+for each edge (p,q) read from file
+set1 = find(p)
+set2 = find(q)
+
+if (set1 != set2) merge (set1,set2)
+
+Let us say there are m edges and n vertices, potentially merge could get called m times
+O(m*n) - complexity. This is anywhere from quadratic to cubic. This will be slower compared to
+dfs or bfs which run in O(m+n) time which is linear in number of vertices and edges.
+
+findComponent (int u) {
+// returns the connected compnent (cc) #
+// using findSet
+}
+
+mergeComponents (int u, int v){
+find the set for u and find the set for v
+if they are not equal{
+go to verticSets and the find the sizes of the sets corresponding to the set number obtained
+from findSet. The larger set is called p and the smaller set is called q. 
+1. Call append list in MyLinkedList to append q to p.
+2.Go to findSet and modify the label of the smaller set to the larger label.
+
+}
+
+Use hashsets to remove duplicates.
+
+Find the max number within the dataset first to determine the size of the the vertex set
+then intialize the data structure with linkedlist with 0.
