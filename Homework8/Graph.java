@@ -92,6 +92,32 @@ public class Graph
                 DFS(val, visited);
         }
     }
+
+    public boolean DFSCheck(int v, boolean[] visited){
+        visited[v] = true;
+        // System.out.print(v + " ");
+        large ++;
+        for (int i = 0;i<graph.get(v).size();i++) {
+            int val = graph.get(v).get(i);
+            if (!visited[val])
+                DFS(val, visited);
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void numOfTrees(){
+        int count  = 0;
+        boolean[] visited = new boolean[numVertex];
+        for (int v = 0; v < numVertex; ++v) {
+            if(DFSCheck(v, visited))
+                count++;
+        }        
+        System.out.println("Number of trees " + count);
+
+    }
     public void LargestComponent(){
         int largest = 0;
         for (int i = 0;i<numVertex;i++) {
@@ -172,6 +198,7 @@ public class Graph
             ex.printStackTrace();
         }
         driver.graph.get(0).printListForward();
+        driver.numOfTrees();
         System.out.println("Number of edges " + driver.numEdge);
         System.out.println("Number of vertices " + driver.numVertex);
         driver.LargestComponent();
