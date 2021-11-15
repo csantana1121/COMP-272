@@ -22,8 +22,8 @@ public class Graph
         large= 0;
         graph = new ArrayList<>(numVertex);
         for (int i=0;i<numVertex;i++){
-        graph.add(i,new MyLinkedList<>());
-        graph.get(i).addFirst(i);
+            graph.add(i,new MyLinkedList<>());
+            graph.get(i).addFirst(i);
         }
     }
     
@@ -68,7 +68,7 @@ public class Graph
         for (int v = 0; v < numVertex; ++v) {
             // System.out.println(graph.get(v).size());
             int temp = large;
-            if (!visited[v]) {
+            if (!visited[v] && graph.get(v).size()!=1) {
                 large = 0;
                 DFS(v, visited);
                 cc++;
@@ -88,7 +88,7 @@ public class Graph
         large ++;
         for (int i = 0;i<graph.get(v).size();i++) {
             int val = graph.get(v).get(i);
-            if (!visited[val])
+            if (!visited[val]&& graph.get(v).size()>1)
                 DFS(val, visited);
         }
     }
@@ -100,7 +100,7 @@ public class Graph
         for (int i = 0;i<graph.get(v).size();i++) {
             int val = graph.get(v).get(i);
             if (!visited[val])
-                DFS(val, visited);
+                DFSCheck(val, visited);
             else{
                 return false;
             }
@@ -134,7 +134,7 @@ public class Graph
         boolean[] visited = new boolean[numVertex];
         int cc = 0;
         for (int v = 0; v < numVertex; ++v) {
-            if (!visited[v]) {
+            if (!visited[v]&& graph.get(v).size()>1) {
                 BFS(v,visited);
                 cc++;
                 // System.out.println();
@@ -203,8 +203,44 @@ public class Graph
         System.out.println("Number of vertices " + driver.numVertex);
         driver.LargestComponent();
         driver.DFSNumofConnectedComponents();
-        driver.BFSNumofConnectedComponents();;
-
+        driver.BFSNumofConnectedComponents();
+        text = new File("Graph.txt");
+        max = 0;
+        try{
+            Scanner scanner = new Scanner(text);
+            while(scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] arrOfStr = line.split(",");
+                for(String val : arrOfStr){
+                    if(Integer.parseInt(val) > max){
+                        max = Integer.parseInt(val);
+                    }
+                }
+        }
+        } catch ( FileNotFoundException ex){
+            ex.printStackTrace();
+        }
+        // System.out.println(max);
+        Graph tester = new Graph(max+1);
+        try{
+            Scanner scanner = new Scanner(text);
+            while(scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] arrOfStr = line.split(",");
+                tester.addEdge(Integer.parseInt(arrOfStr[0]), Integer.parseInt(arrOfStr[1]));
+        }
+        } catch ( FileNotFoundException ex){
+            ex.printStackTrace();
+        }
+        // driver.graph.get(0).printListForward();
+        System.out.println();
+        System.out.println("Graph.txt dataset: ");
+        tester.numOfTrees();
+        System.out.println("Number of edges " + tester.numEdge);
+        System.out.println("Number of vertices " + tester.numVertex);
+        tester.LargestComponent();
+        tester.DFSNumofConnectedComponents();
+        tester.BFSNumofConnectedComponents();
     }
     
 }
