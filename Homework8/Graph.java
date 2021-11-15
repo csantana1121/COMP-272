@@ -49,6 +49,12 @@ public class Graph
          if (!edgePresent(v,u))
             graph.get(v).addLast(u);
         numEdge++;
+        // MyLinkedList set1 = graph.get(v);
+        // MyLinkedList set2 = graph.get(u);
+        // if(!set1.equals(set2)){
+        //     set1 = set1.union(set2);
+        //     set2 = set2.union(set1);
+        // }
     }
     else throw new IndexOutOfBoundsException();
     
@@ -135,6 +141,7 @@ public class Graph
         }
             
     }
+
     public static void main(String[] args) {
         File text = new File("Email-Enron.txt");
         int max = 0;
@@ -164,6 +171,7 @@ public class Graph
         } catch ( FileNotFoundException ex){
             ex.printStackTrace();
         }
+        driver.graph.get(0).printListForward();
         System.out.println("Number of edges " + driver.numEdge);
         System.out.println("Number of vertices " + driver.numVertex);
         driver.LargestComponent();
