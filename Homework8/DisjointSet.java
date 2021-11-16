@@ -29,10 +29,6 @@ class DisjointSet
  
         parent.put(x, y);
     }
-}
- 
-public class Main
-{
     public static void printSets(int[] universe, DisjointSet ds)
     {
         for (int i: universe) {
@@ -94,7 +90,7 @@ public class Main
         DisjointSet ds = new DisjointSet();
         ds.makeSet(universe);
         System.out.println(universe.length);
-        System.out.println(universe[36691]);
+        // System.out.println(universe[36691]);
         try{
             Scanner scanner = new Scanner(text);
             while(scanner.hasNextLine()){
@@ -144,7 +140,7 @@ public class Main
             ex.printStackTrace();
         }
         // ds.makeSet(universe);
-        System.out.println("here");
+        // System.out.println("here");
         countSets(universe, ds);
     }
 }
