@@ -50,7 +50,7 @@ class DisjointSet
 
     public static void main(String[] args)
     {
-        // // Testing example:
+        // Testing example:
         // int[] universe = { 1, 2, 3, 4, 5 };
  
         // DisjointSet ds = new DisjointSet();

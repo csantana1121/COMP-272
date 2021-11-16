@@ -1,0 +1,10 @@
+Use priority queue/min heap and then sort the input edges so you only have to process n-1 edges.
+Where n is the number of nodes/numVertex.
+Weights.txt corresponds line for line with artist_edges.txt
+
+WeightedEdge.java can create a priority that associates the weighted edges with their edge line. 
+Then after everything is added into WeightedEdge data struture you just use PriorityQueue data struture
+to create the priority queue. This does everything in linear time vs n log n time.
+
+He will add his own code for graph. Use that for implementing the algorithmn. Should be easy plugging 
+in numbers you got this.
