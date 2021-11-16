@@ -65,21 +65,61 @@ public class Graph
     public void DFSNumofConnectedComponents(){
         boolean[] visited = new boolean[numVertex];
         int cc = 0;
-        for (int v = 0; v < numVertex; ++v) {
+        for (int v = 0; v < numVertex; v++) {
             // System.out.println(graph.get(v).size());
             int temp = large;
-            if (!visited[v] && graph.get(v).size()!=1) {
+            if (!visited[v]) {
                 large = 0;
+                // // System.out.println(v);
+                // large++;
                 DFS(v, visited);
                 cc++;
                 if(temp>large){
                     large = temp;
                 }
-                // System.out.println();
             }
         }
         System.out.println("Connected Components = " + cc);
         System.out.println("Largest Connected Component " + large);
+    }
+
+    public int depthFirst(int v,boolean[] visited,int ans){
+    // Marking the visited vertex as true
+    visited[v] = true;
+    // System.out.print(v + " ");
+    
+    // Incrementing the count of
+    // connected chain length
+    ans++;
+    
+    for (int i = 0;i<graph.get(v).size();i++)
+    {
+        int val = graph.get(v).get(i);
+        if (!visited[val])
+        {
+        // Recursive call to the DFS algorithm
+        ans = depthFirst(val, visited, ans);
+        }
+    }
+    return ans;
+    }
+
+    public void largestComponent(){
+        int ans = 0;
+        int max= 0;
+        boolean[] visited = new boolean[numVertex];
+        for (int v = 0; v < numVertex; v++) {
+            // System.out.println(graph.get(v).size());
+            if (!visited[v]) {
+                // // System.out.println(v);
+                // large++;
+                ans = depthFirst(v, visited, ans);
+                if(ans>max){
+                    max = ans;
+                }
+            }
+        }
+        System.out.println("Largest component " +max);
     }
 
     public void DFS(int v, boolean[] visited){
@@ -88,8 +128,9 @@ public class Graph
         large ++;
         for (int i = 0;i<graph.get(v).size();i++) {
             int val = graph.get(v).get(i);
-            if (!visited[val]&& graph.get(v).size()>1)
+            if (!visited[val]){
                 DFS(val, visited);
+            }
         }
     }
 
@@ -99,11 +140,13 @@ public class Graph
         large ++;
         for (int i = 0;i<graph.get(v).size();i++) {
             int val = graph.get(v).get(i);
+            boolean check = false;
             if (!visited[val])
-                DFSCheck(val, visited);
+                check = DFSCheck(val, visited);
             else{
                 return false;
             }
+            return check;
         }
         return true;
     }
@@ -134,7 +177,9 @@ public class Graph
         boolean[] visited = new boolean[numVertex];
         int cc = 0;
         for (int v = 0; v < numVertex; ++v) {
-            if (!visited[v]&& graph.get(v).size()>1) {
+            // int temp = large;
+            if (!visited[v]) {
+                // large = 0;
                 BFS(v,visited);
                 cc++;
                 // System.out.println();
@@ -154,6 +199,7 @@ public class Graph
         {
             v = queue.removeFirst();
             // System.out.print(v+" ");
+            // large ++;
             MyLinkedList<Integer> i = graph.get(v);
             while (!i.isEmpty())
             {
@@ -166,6 +212,41 @@ public class Graph
             }
         }
             
+    }
+
+    public int solve()
+    {//will do a bfs, to find the largest connected component
+        boolean[] visited = new boolean[numVertex] ;
+        int max_size = 0 ;
+        for(int i=0;i<graph.size();i++)
+        {
+
+            if(!visited[i])
+            {
+                int size = 0 ;
+                ArrayDeque<Integer> DQ = new ArrayDeque<Integer>() ;
+                // int src = i ;
+                DQ.add(i) ;
+                while(!DQ.isEmpty())
+                {
+
+                    int temp = DQ.poll() ;
+                    if(visited[temp]) continue ;
+                    visited[temp] = true ;
+                    size++ ;
+                    for(int j=0;j<graph.get(temp).size();j++)
+                    {
+                        int val = graph.get(temp).get(j) ;
+                        if(!visited[val])
+                            DQ.add(val) ;
+                    }
+                }
+                if(size>max_size)
+                    max_size = size==1?max_size:size ;
+            }
+        }
+        return max_size ;
+
     }
 
     public static void main(String[] args) {
@@ -201,9 +282,10 @@ public class Graph
         driver.numOfTrees();
         System.out.println("Number of edges " + driver.numEdge);
         System.out.println("Number of vertices " + driver.numVertex);
-        driver.LargestComponent();
+        driver.largestComponent();
         driver.DFSNumofConnectedComponents();
         driver.BFSNumofConnectedComponents();
+        System.out.println(driver.solve());
         text = new File("Graph.txt");
         max = 0;
         try{
@@ -238,7 +320,7 @@ public class Graph
         tester.numOfTrees();
         System.out.println("Number of edges " + tester.numEdge);
         System.out.println("Number of vertices " + tester.numVertex);
-        tester.LargestComponent();
+        tester.largestComponent();
         tester.DFSNumofConnectedComponents();
         tester.BFSNumofConnectedComponents();
     }

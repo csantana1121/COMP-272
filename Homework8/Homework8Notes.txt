@@ -4,7 +4,7 @@
 
 For this question could use:
 ArrayList<ArrayList<E>>
-ArrayList<LinkedList<Integer>>
+ArrayList<MyLinkedList<Integer>>
 
 To read in values use MyLinkedList can merge lists by add pointer to prev and next
 for the first and last elements of the two lists.
@@ -60,3 +60,11 @@ Use hashsets to remove duplicates.
 
 Find the max number within the dataset first to determine the size of the the vertex set
 then intialize the data structure with linkedlist with 0.
+
+Read in inputs --> similar to dfs
+Edge weight method
+ConnectedComponents ---> calls back on pre-defined methods find and merge
+1) find 
+2) merge
+3)append(x,b)
+return
