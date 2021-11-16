@@ -2,36 +2,28 @@ import java.io.*;
 import java.util.*;
 
  
-// A class to represent a disjoint set
-class DisjointSet
+public class DisjointSet
 {
     private Map<Integer, Integer> parent = new HashMap<>();
  
-    // perform MakeSet operation
     public void makeSet(int[] universe)
     {
-        // create `n` disjoint sets (one for each item)
         for (int i: universe) {
             parent.put(i, i);
         }
     }
  
-    // Find the root of the set in which element `k` belongs
     public int Find(int k)
     {
-        // if `k` is root
         if (parent.get(k) == k) {
             return k;
         }
  
-        // recur for the parent until we find the root
         return Find(parent.get(k));
     }
  
-    // Perform Union of two subsets
     public void Union(int a, int b)
     {
-        // find the root of the sets in which elements `x` and `y` belongs
         int x = Find(a);
         int y = Find(b);
  
@@ -39,7 +31,7 @@ class DisjointSet
     }
 }
  
-class Main
+public class Main
 {
     public static void printSets(int[] universe, DisjointSet ds)
     {
@@ -60,28 +52,25 @@ class Main
         System.out.println("Number of connected Components = " + hs.size());
     }
 
-    // Disjoint–Set data structure (Union–Find algorithm)
     public static void main(String[] args)
     {
-        // universe of items
-        int[] universe = { 1, 2, 3, 4, 5 };
+        // // Testing example:
+        // int[] universe = { 1, 2, 3, 4, 5 };
  
-        // initialize `DisjointSet` class
-        DisjointSet ds = new DisjointSet();
+        // DisjointSet ds = new DisjointSet();
  
-        // create a singleton set for each element of the universe
-        ds.makeSet(universe);
-        printSets(universe, ds);
+        // ds.makeSet(universe);
+        // printSets(universe, ds);
  
-        ds.Union(4, 3);        // 4 and 3 are in the same set
-        printSets(universe, ds);
+        // ds.Union(4, 3);      
+        // printSets(universe, ds);
  
-        ds.Union(2, 1);        // 1 and 2 are in the same set
-        printSets(universe, ds);
+        // ds.Union(2, 1);       
+        // printSets(universe, ds);
  
-        ds.Union(1, 3);        // 1, 2, 3, 4 are in the same set
-        printSets(universe, ds);
-        countSets(universe, ds);
+        // ds.Union(1, 3);        
+        // printSets(universe, ds);
+        // countSets(universe, ds);
         File text = new File("Email-Enron.txt");
         int max = 0;
         try{
@@ -99,10 +88,10 @@ class Main
             ex.printStackTrace();
         }
         // System.out.println(max);
-        universe = new int[max+1];
+        int[] universe = new int[max+1];
         for(int i = 0;i<max+1;i++)
             universe[i] = i;
-        ds = new DisjointSet();
+        DisjointSet ds = new DisjointSet();
         ds.makeSet(universe);
         System.out.println(universe.length);
         System.out.println(universe[36691]);
