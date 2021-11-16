@@ -79,7 +79,7 @@ public class Graph
                 }
             }
         }
-        System.out.println("Connected Components = " + cc);
+        System.out.println("DFS Connected Components = " + cc);
         System.out.println("Largest Connected Component " + large);
     }
 
@@ -114,6 +114,7 @@ public class Graph
                 // // System.out.println(v);
                 // large++;
                 ans = depthFirst(v, visited, ans);
+                ans--;
                 if(ans>max){
                     max = ans;
                 }
@@ -137,7 +138,6 @@ public class Graph
     public boolean DFSCheck(int v, boolean[] visited){
         visited[v] = true;
         // System.out.print(v + " ");
-        large ++;
         for (int i = 0;i<graph.get(v).size();i++) {
             int val = graph.get(v).get(i);
             boolean check = false;
@@ -158,6 +158,11 @@ public class Graph
             if(DFSCheck(v, visited))
                 count++;
         }        
+        for(int v =0; v<numVertex;v++){
+            if(graph.get(v).size()==1){
+                count++;
+            }
+        }
         System.out.println("Number of trees " + count);
 
     }
@@ -185,7 +190,7 @@ public class Graph
                 // System.out.println();
             }
         }
-        System.out.println("Connected Components = " + cc);
+        System.out.println("BFS Connected Components = " + cc);
     }
 
     public void BFS(int v,boolean[] visited){
@@ -212,41 +217,6 @@ public class Graph
             }
         }
             
-    }
-
-    public int solve()
-    {//will do a bfs, to find the largest connected component
-        boolean[] visited = new boolean[numVertex] ;
-        int max_size = 0 ;
-        for(int i=0;i<graph.size();i++)
-        {
-
-            if(!visited[i])
-            {
-                int size = 0 ;
-                ArrayDeque<Integer> DQ = new ArrayDeque<Integer>() ;
-                // int src = i ;
-                DQ.add(i) ;
-                while(!DQ.isEmpty())
-                {
-
-                    int temp = DQ.poll() ;
-                    if(visited[temp]) continue ;
-                    visited[temp] = true ;
-                    size++ ;
-                    for(int j=0;j<graph.get(temp).size();j++)
-                    {
-                        int val = graph.get(temp).get(j) ;
-                        if(!visited[val])
-                            DQ.add(val) ;
-                    }
-                }
-                if(size>max_size)
-                    max_size = size==1?max_size:size ;
-            }
-        }
-        return max_size ;
-
     }
 
     public static void main(String[] args) {
@@ -278,14 +248,12 @@ public class Graph
         } catch ( FileNotFoundException ex){
             ex.printStackTrace();
         }
-        driver.graph.get(0).printListForward();
         driver.numOfTrees();
         System.out.println("Number of edges " + driver.numEdge);
         System.out.println("Number of vertices " + driver.numVertex);
-        driver.largestComponent();
+        // driver.largestComponent();
         driver.DFSNumofConnectedComponents();
         driver.BFSNumofConnectedComponents();
-        System.out.println(driver.solve());
         text = new File("Graph.txt");
         max = 0;
         try{
@@ -320,7 +288,7 @@ public class Graph
         tester.numOfTrees();
         System.out.println("Number of edges " + tester.numEdge);
         System.out.println("Number of vertices " + tester.numVertex);
-        tester.largestComponent();
+        // tester.largestComponent();
         tester.DFSNumofConnectedComponents();
         tester.BFSNumofConnectedComponents();
     }

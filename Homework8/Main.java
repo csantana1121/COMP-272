@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
  
-public class DisjointSet
+class DisjointSet
 {
     private Map<Integer, Integer> parent = new HashMap<>();
  
