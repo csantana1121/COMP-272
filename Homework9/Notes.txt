@@ -8,3 +8,26 @@ to create the priority queue. This does everything in linear time vs n log n tim
 
 He will add his own code for graph. Use that for implementing the algorithmn. Should be easy plugging 
 in numbers you got this.
+
+We are goign to use trees to represent sets ( connected components ). These are rooted trees.
+array indexes --> [1,2,3,4,5,6,7,8,9,10]
+array values --> [1,2,3,2,1,3,4,3,3,4]
+def as set[]
+set[i] = i, then i is the root of a tree
+set[i] =/= i set[i] = j j =/= i then j is the parent of i
+ex. index 5 is the child of index 1. 
+So in general you just keep looking for the parent until the index = set # 
+ex. find the set that belongs to 10. parent of 10 is 4. Go to 4. Parent of 4 is 2.
+Go to 2. Parent of 2 is 2. Therefore 10 belongs to set #2.
+
+Intialize as set [i] = i and update as you read in edges.
+
+
+always merge the tree of the smaller height to the taller tree by linking the roots.
+
+2 arrays 1 array for the heights of the vertecies, and another array for the set numbers.
+
+This is the new algorithmn.
+Everything is listed together in the dataset with the pdfs just put everything together and run.
+
+For the other algorithmn will just use the pre-existing example from Homework 8.
