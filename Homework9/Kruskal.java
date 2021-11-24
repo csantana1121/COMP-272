@@ -170,7 +170,7 @@ catch (FileNotFoundException e) {
      readAndStoreGraph("artist_edges.txt","Weights.txt");
     //  System.out.println(pq.peek());
          Kruskal cc = new Kruskal(numVertex+1,numEdges);
-         System.out.println(cc.pq.peek());
+        //  System.out.println(cc.pq.peek());
       /*  cc.edgeSet = new ArrayList<>();
          cc.edgeSet.add(new Edge(1,9));
          cc.edgeSet.add(new Edge(5,6));
@@ -187,12 +187,6 @@ catch (FileNotFoundException e) {
          
         
      long t1 = System.currentTimeMillis();
-         
-        //  for (int i=0;i<numEdges;i++) {
-        //    cc.mergeComponents  (cc.findComponent(edgeSet.get(i).v1),cc.findComponent(edgeSet.get(i).v2));
-             
-        //     }
-
         //n= number of vertices
         //set up the priority queue of weighted edges.
         int treeEdges = 0;
@@ -219,9 +213,14 @@ catch (FileNotFoundException e) {
         
         }// end if
         }
-        System.out.println(treeEdges);
-        System.out.println(totaledges - pq.size());
-        System.out.println(totalweight);
+        System.out.println("Max vertex label: " + numVertex);
+        System.out.println("Number of edges: " + totaledges);
+        System.out.println("MST Edges: " + treeEdges);
+        System.out.println("Number of Edges considered: " + (totaledges - pq.size()));
+        System.out.println("Total weight of MST: " +totalweight);
+        System.out.println("Edges held within finalvals ArrayList");
+        //ArrayList finalvals holds the edges of the spanning Tree
+        // System.out.println(finalvals);
              long t2=System.currentTimeMillis();
             System.out.println("time taken "+ (t2-t1)*1.0/1000);
             
