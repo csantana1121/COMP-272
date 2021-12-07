@@ -56,8 +56,10 @@ public class DirectedGraph  {
         marked[v]=true;
         
         for (Integer u:dGraph.get(v).getOutList())
+        // replace dGraph.get(v).getInList()
         if (!marked[u]) postOrderDFT(u);
        System.out.println(v);
+       //save this finishing value into an array finishing[k] last element is the last finishing vertex.
     }
     
     public void depthFirstTraversal() {
@@ -87,7 +89,42 @@ public class DirectedGraph  {
         dg.addEdge(2,3);
         dg.addEdge(3,5);
         dg.addEdge(4,5);
-        
+        File text = new File("Slashdot0902.txt");
+        int max = 0;
+        try{
+            Scanner scanner = new Scanner(text);
+            scanner.nextLine();
+            scanner.nextLine();
+            scanner.nextLine();
+            scanner.nextLine();
+            while(scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] arrOfStr = line.split("\t");
+                for(String val : arrOfStr){
+                    if(Integer.parseInt(val) > max){
+                        max = Integer.parseInt(val);
+                    }
+                }
+        }
+        } catch ( FileNotFoundException ex){
+            ex.printStackTrace();
+        }
+        System.out.println(max);
+        DirectedGraph driver = new DirectedGraph(max+1);
+        try{
+            Scanner scanner = new Scanner(text);
+            scanner.nextLine();
+            scanner.nextLine();
+            scanner.nextLine();
+            scanner.nextLine();
+            while(scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] arrOfStr = line.split("\t");
+                driver.addEdge(Integer.parseInt(arrOfStr[0]), Integer.parseInt(arrOfStr[1]));
+        }
+        } catch ( FileNotFoundException ex){
+            ex.printStackTrace();
+        }
         
         
         
@@ -114,6 +151,12 @@ public class DirectedGraph  {
         System.out.println("post order depth first traversal");
         dg.postOrderDepthFirstTraversal();
         
+        System.out.println ("regular depth first traversal");
+        driver.depthFirstTraversal();
+        System.out.println ();
+        driver.marked= new boolean[max+1];
+        System.out.println("post order depth first traversal");
+        driver.postOrderDepthFirstTraversal();
         
         
     }
