@@ -5,6 +5,10 @@ public class DirectedGraph  {
     ArrayList<DirectedNodeList> dGraph;
     int numVertex;
    boolean [] marked;
+   // int number;
+   //Look at #4 for answer to 3 can just HashMap<Integer,Arraylist<Integer>>
+   // intialize Hashmap POGGIES
+   //create an arraylist to store each component coming out of recrusive DFT
     
     
     public DirectedGraph() {
@@ -60,16 +64,21 @@ public class DirectedGraph  {
         if (!marked[u]) postOrderDFT(u);
        System.out.println(v);
        //save this finishing value into an array finishing[k] last element is the last finishing vertex.
+       // finishing[number++] = v
     }
     
     public void depthFirstTraversal() {
        for (int i=0;i<numVertex;i++) 
        if (!marked[i])
+       // leaders come out here :namely i
+       // intialize arraylist empty make global arraylist or something
            dFT (i);
        
     }
     public void dFT(int v){
+        //strongly connected components come out here
         System.out.println(v);
+        //add v to arraylist
         marked[v]=true;
         
         for (Integer u:dGraph.get(v).getOutList())
