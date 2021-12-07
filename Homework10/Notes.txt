@@ -22,5 +22,6 @@ public void addEdge(int u, int v) {
             }
         }
         //do throw indexout of bounds exception
+        numEdges++;
     }
 }
