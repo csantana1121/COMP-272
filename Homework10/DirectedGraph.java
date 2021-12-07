@@ -73,6 +73,13 @@ public class DirectedGraph  {
        // leaders come out here :namely i
        // intialize arraylist empty make global arraylist or something
            dFT (i);
+           //[it the arraylist in the hashmap at key i]
+           // have a set array and go through adding the leader to all the elements of the now
+           // full arraylist that has the connected components for that leader.
+           //then you can create the find method using this array. Create on fly with hashmap.
+           // Have to create a seperate DirectedGraph java file that stores edges HashDirectedGraph
+           // edges being key value of the integer leader and Directed NodeList object ex.
+           //Hashmap<Integer, DirectedNodeList> hDGraph; underlying data structure.
        
     }
     public void dFT(int v){
@@ -87,7 +94,10 @@ public class DirectedGraph  {
     }
     
     
-    
+    // For number 4: Try to make a find[u] and find[v] for each edge and then if 
+    /*find[u] != find[v] then add that edge. Otherwise if they are equal ignore the edge.
+    The find method returns the leader. In the code create a set array
+    */
     public static void main(String[] args) {
         int n =6;
         DirectedGraph dg = new DirectedGraph(n);
