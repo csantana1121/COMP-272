@@ -5,6 +5,12 @@ public class DirectedGraph  {
     ArrayList<DirectedNodeList> dGraph;
     int numVertex;
    boolean [] marked;
+   int number;
+   ArrayList<Integer> component;
+   int[] finishing;
+   HashMap<Integer, ArrayList<Integer>> SCC;
+   int maxlen;
+
    // int number;
    //Look at #4 for answer to 3 can just HashMap<Integer,Arraylist<Integer>>
    // intialize Hashmap POGGIES
@@ -21,6 +27,9 @@ public class DirectedGraph  {
       numVertex =n;
       dGraph = new ArrayList<>(n);
       marked= new boolean[n];
+      finishing = new int[n];
+      SCC = new HashMap<>();
+      maxlen =0;
       for (int i=0;i<numVertex;i++)
        dGraph.add(new DirectedNodeList());
     }
@@ -59,20 +68,25 @@ public class DirectedGraph  {
         
         marked[v]=true;
         
-        for (Integer u:dGraph.get(v).getOutList())
+        for (Integer u:dGraph.get(v).getInList())
         // replace dGraph.get(v).getInList()
         if (!marked[u]) postOrderDFT(u);
-       System.out.println(v);
+            finishing[number++] = v;
        //save this finishing value into an array finishing[k] last element is the last finishing vertex.
        // finishing[number++] = v
     }
     
     public void depthFirstTraversal() {
-       for (int i=0;i<numVertex;i++) 
-       if (!marked[i])
+       for (int i=finishing.length -1;i>0;i--) {
+       if (!marked[finishing[i]]){
        // leaders come out here :namely i
        // intialize arraylist empty make global arraylist or something
-           dFT (i);
+            component = new ArrayList<>();
+            dFT (finishing[i]);
+            SCC.put(finishing[i], component);
+            maxlen = Math.max(maxlen, component.size());
+       }
+    }
            //[it the arraylist in the hashmap at key i]
            // have a set array and go through adding the leader to all the elements of the now
            // full arraylist that has the connected components for that leader.
@@ -85,8 +99,9 @@ public class DirectedGraph  {
     }
     public void dFT(int v){
         //strongly connected components come out here
-        System.out.println(v);
+        // System.out.println(v);
         //add v to arraylist
+        component.add(v);
         marked[v]=true;
         
         for (Integer u:dGraph.get(v).getOutList())
@@ -99,6 +114,10 @@ public class DirectedGraph  {
     /*find[u] != find[v] then add that edge. Otherwise if they are equal ignore the edge.
     The find method returns the leader. In the code create a set array
     */
+    public ReducedGraph reduceGraph(){
+        ReducedGraph rd = new ReducedGraph(numVertex,SCC);
+        
+    }
     public static void main(String[] args) {
         int n =6;
         DirectedGraph dg = new DirectedGraph(n);
@@ -164,19 +183,28 @@ public class DirectedGraph  {
         
        // for (int i=0;i<dg.numVertex;i++)
        //  dg.printAdjacency(i);
-        System.out.println ("regular depth first traversal");
-        dg.depthFirstTraversal();
-        System.out.println ();
-        dg.marked= new boolean[n];
-        System.out.println("post order depth first traversal");
-        dg.postOrderDepthFirstTraversal();
+        // System.out.println ("regular depth first traversal");
+        // dg.depthFirstTraversal();
+        // System.out.println ();
+        // dg.marked= new boolean[n];
+        // System.out.println("post order depth first traversal");
+        // dg.postOrderDepthFirstTraversal();
         
-        System.out.println ("regular depth first traversal");
-        driver.depthFirstTraversal();
-        System.out.println ();
+        // System.out.println ("regular depth first traversal");
+        // driver.depthFirstTraversal();
+        // System.out.println ();
         driver.marked= new boolean[max+1];
         System.out.println("post order depth first traversal");
         driver.postOrderDepthFirstTraversal();
+        System.out.println(driver.finishing.length);
+        System.out.println(driver.finishing[max]);
+        // for(int val: driver.finishing)
+        //     System.out.println(val);
+        driver.marked = new boolean[max+1];
+        driver.depthFirstTraversal();
+        System.out.println("Number of Strongly Connected Components: "+driver.SCC.size());
+        System.out.println("Max size among all strongly connected Components: "+driver.maxlen);
+        ReducedGraph rg = driver.reduceGraph();
         
         
     }
