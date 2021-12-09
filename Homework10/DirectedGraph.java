@@ -114,10 +114,10 @@ public class DirectedGraph  {
     /*find[u] != find[v] then add that edge. Otherwise if they are equal ignore the edge.
     The find method returns the leader. In the code create a set array
     */
-    public ReducedGraph reduceGraph(){
-        ReducedGraph rd = new ReducedGraph(numVertex,SCC);
-        
-    }
+    // public ReducedGraph reduceGraph(){
+    //     ReducedGraph rd = new ReducedGraph(numVertex,SCC);
+
+    // }
     public static void main(String[] args) {
         int n =6;
         DirectedGraph dg = new DirectedGraph(n);
@@ -204,7 +204,7 @@ public class DirectedGraph  {
         driver.depthFirstTraversal();
         System.out.println("Number of Strongly Connected Components: "+driver.SCC.size());
         System.out.println("Max size among all strongly connected Components: "+driver.maxlen);
-        ReducedGraph rg = driver.reduceGraph();
+        // ReducedGraph rg = driver.reduceGraph();
         
         
     }
