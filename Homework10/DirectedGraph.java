@@ -1,7 +1,6 @@
 
 import java.util.*;
 
-import javax.print.attribute.standard.Finishings;
 
 import java.io.*;
 public class DirectedGraph  {
@@ -144,7 +143,7 @@ public class DirectedGraph  {
         } catch ( FileNotFoundException ex){
             ex.printStackTrace();
         }
-        System.out.println("edges considered " + countedges);
+        // System.out.println("edges considered " + countedges);
         return rd;
     }
     public static void main(String[] args) {
