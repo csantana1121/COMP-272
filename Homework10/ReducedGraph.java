@@ -7,6 +7,7 @@ public class ReducedGraph {
     boolean [] marked;
     int numEdges;
     HashMap<Integer, ArrayList<Integer>> scc;
+    int e = 28331;
     public ReducedGraph() {
         hDdGraph = new HashMap<>();
         numVertex=0;
@@ -50,7 +51,7 @@ public class ReducedGraph {
             if(!marked[v])
                 addVertex(v);
             if(!isEdgePresent(u, v)) {
-                if (u!=v && numEdges !=28331) {
+                if (u!=v && numEdges !=e) {
                     getNeighborList(u).addToOutList(v);
                     getNeighborList(v).addToInList(u);
                     numEdges++;
