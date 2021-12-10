@@ -13,6 +13,7 @@ public class DirectedGraph  {
    int[] finishing;
    HashMap<Integer, ArrayList<Integer>> SCC;
    int maxlen;
+//    static int help;
 
    // int number;
    //Look at #4 for answer to 3 can just HashMap<Integer,Arraylist<Integer>>
@@ -137,6 +138,7 @@ public class DirectedGraph  {
                     countedges++;
                     rd.addEdge(Integer.parseInt(arrOfStr[0]), Integer.parseInt(arrOfStr[1]));
                     // rd.addEdge(find(Integer.parseInt(arrOfStr[0])), find(Integer.parseInt(arrOfStr[1])));
+                    // help = find(Integer.parseInt(arrOfStr[0]));
                 }
         }
         } catch ( FileNotFoundException ex){
@@ -234,6 +236,8 @@ public class DirectedGraph  {
         ReducedGraph rg = driver.reduceGraph(text);
         System.out.println("Number of vertices for reduced graph " + rg.hDdGraph.size());
         System.out.println("Number of reduced graph edges " + rg.numEdges);
+        // // System.out.println(rg.hDdGraph.get(help).getInDegree());
+        // System.out.println(rg.hDdGraph.get(0).getOutDegree());
         
     }
     

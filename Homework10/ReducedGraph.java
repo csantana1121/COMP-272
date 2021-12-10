@@ -51,8 +51,9 @@ public class ReducedGraph {
             if(!marked[v])
                 addVertex(v);
             if(!isEdgePresent(u, v)) {
-                if (u!=v && numEdges !=e) {
+                if (u!=v) { //  && numEdges !=e
                     getNeighborList(u).addToOutList(v);
+                    // System.out.println(getNeighborList(u).getOutDegree());
                     getNeighborList(v).addToInList(u);
                     numEdges++;
                 }
