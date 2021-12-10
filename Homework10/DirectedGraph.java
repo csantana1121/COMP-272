@@ -232,8 +232,8 @@ public class DirectedGraph  {
         System.out.println("Number of Strongly Connected Components: "+driver.SCC.size());
         System.out.println("Max size among all strongly connected Components: "+driver.maxlen);
         ReducedGraph rg = driver.reduceGraph(text);
-        System.out.println(rg.hDdGraph.size());
-        System.out.println(rg.numEdges);
+        System.out.println("Number of vertices for reduced graph " + rg.hDdGraph.size());
+        System.out.println("Number of reduced graph edges " + rg.numEdges);
         
     }
     
