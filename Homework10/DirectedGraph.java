@@ -122,7 +122,7 @@ public class DirectedGraph  {
     }
     
     public ReducedGraph reduceGraph(File text){
-        ReducedGraph rd = new ReducedGraph(SCC.size(), SCC);
+        ReducedGraph rd = new ReducedGraph(SCC.size());
         int countedges = 0;
         try{
             Scanner scanner = new Scanner(text);
