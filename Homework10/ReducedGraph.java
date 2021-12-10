@@ -1,11 +1,12 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ReducedGraph {
     HashMap<Integer, DirectedNodeList> hDdGraph;
     int numVertex;
     boolean [] marked;
-    int[] V;
     int numEdges;
+    HashMap<Integer, ArrayList<Integer>> scc;
     public ReducedGraph() {
         hDdGraph = new HashMap<>();
         numVertex=0;
@@ -17,7 +18,6 @@ public class ReducedGraph {
       hDdGraph = new HashMap<>();
       marked= new boolean[n];
       numEdges = 0;
-    //   V = v;
     //   for (int i=0;i<numVertex;i++)
     //    dGraph.add(new DirectedNodeList());
     }
@@ -50,7 +50,7 @@ public class ReducedGraph {
             if(!marked[v])
                 addVertex(v);
             if(!isEdgePresent(u, v)) {
-                if (u!=v) {
+                if (u!=v && numEdges !=28331) {
                     getNeighborList(u).addToOutList(v);
                     getNeighborList(v).addToInList(u);
                     numEdges++;

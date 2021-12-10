@@ -1,5 +1,8 @@
 
 import java.util.*;
+
+import javax.print.attribute.standard.Finishings;
+
 import java.io.*;
 public class DirectedGraph  {
     ArrayList<DirectedNodeList> dGraph;
@@ -119,7 +122,8 @@ public class DirectedGraph  {
     }
     
     public ReducedGraph reduceGraph(File text){
-        ReducedGraph rd = new ReducedGraph(SCC.size());
+        ReducedGraph rd = new ReducedGraph(SCC.size(), SCC);
+        int countedges = 0;
         try{
             Scanner scanner = new Scanner(text);
             scanner.nextLine();
@@ -130,13 +134,15 @@ public class DirectedGraph  {
                 String line = scanner.nextLine();
                 String[] arrOfStr = line.split("\t");
                 if (find(Integer.parseInt(arrOfStr[0])) != find(Integer.parseInt(arrOfStr[1]))) {
-                    
+                    countedges++;
                     rd.addEdge(Integer.parseInt(arrOfStr[0]), Integer.parseInt(arrOfStr[1]));
+                    // rd.addEdge(find(Integer.parseInt(arrOfStr[0])), find(Integer.parseInt(arrOfStr[1])));
                 }
         }
         } catch ( FileNotFoundException ex){
             ex.printStackTrace();
         }
+        System.out.println("edges considered " + countedges);
         return rd;
     }
     public static void main(String[] args) {
