@@ -5,28 +5,31 @@ public class ReducedGraph {
     int numVertex;
     boolean [] marked;
     int[] V;
+    int numEdges;
     public ReducedGraph() {
-        dGraph = new ArrayList<>();
+        hDdGraph = new HashMap<>();
         numVertex=0;
-        
+        numEdges = 0;
     }
     
     public ReducedGraph(int n) {
       numVertex =n;
       hDdGraph = new HashMap<>();
       marked= new boolean[n];
+      numEdges = 0;
     //   V = v;
     //   for (int i=0;i<numVertex;i++)
     //    dGraph.add(new DirectedNodeList());
     }
     public DirectedNodeList getNeighborList(int u) {
-        return dGraph.get(u);
+        return hDdGraph.get(u);
     }
 
     public void addVertex (int k) {
         // k is within the bounds of 0 and max Vertex label of the original directed graph
         //hDGraph.add(k,new DirectedNodeList());
-        hDGraph.add(k,new DirectedNodeList());
+        marked[k] = true;
+        hDdGraph.put(k,new DirectedNodeList());
         //so call addVertex before you add Edge if they don't already exist
     }
     
@@ -41,7 +44,19 @@ public class ReducedGraph {
     public void addEdge(int u, int v) {
         //assume all vertices are created
         //directed edge u to v will cause outdegree of u to go up and indegree of v to go up.
-    
+        if (u >= 0 && u < numVertex && v >=0 && v< numVertex) {
+            if(!marked[u])
+                addVertex(u);
+            if(!marked[v])
+                addVertex(v);
+            if(!isEdgePresent(u, v)) {
+                if (u!=v) {
+                    getNeighborList(u).addToOutList(v);
+                    getNeighborList(v).addToInList(u);
+                    numEdges++;
+                }
+            }
+        }
         //if (u>=0 &&u <numVertex && v>=0 && v < numVertex) {
             // if edge not present {
             //     if (u!=v) {
@@ -50,7 +65,7 @@ public class ReducedGraph {
             //     }
             // }
             //do throw indexout of bounds exception
-            numEdges++;
+           // numEdges++;
         // }
     }
 }

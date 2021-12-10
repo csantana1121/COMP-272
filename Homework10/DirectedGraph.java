@@ -114,9 +114,10 @@ public class DirectedGraph  {
     /*find[u] != find[v] then add that edge. Otherwise if they are equal ignore the edge.
     The find method returns the leader. In the code create a set array
     */
-    public int find(x){
+    public int find(int x){
         return finishing[x];
     }
+    
     public ReducedGraph reduceGraph(File text){
         ReducedGraph rd = new ReducedGraph(SCC.size());
         try{
@@ -128,7 +129,10 @@ public class DirectedGraph  {
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 String[] arrOfStr = line.split("\t");
-                rd.addEdge(Integer.parseInt(arrOfStr[0]), Integer.parseInt(arrOfStr[1]));
+                if (find(Integer.parseInt(arrOfStr[0])) != find(Integer.parseInt(arrOfStr[1]))) {
+                    
+                    rd.addEdge(Integer.parseInt(arrOfStr[0]), Integer.parseInt(arrOfStr[1]));
+                }
         }
         } catch ( FileNotFoundException ex){
             ex.printStackTrace();
@@ -221,8 +225,9 @@ public class DirectedGraph  {
         driver.depthFirstTraversal();
         System.out.println("Number of Strongly Connected Components: "+driver.SCC.size());
         System.out.println("Max size among all strongly connected Components: "+driver.maxlen);
-        ReducedGraph rg = driver.reduceGraph();
-        
+        ReducedGraph rg = driver.reduceGraph(text);
+        System.out.println(rg.hDdGraph.size());
+        System.out.println(rg.numEdges);
         
     }
     
